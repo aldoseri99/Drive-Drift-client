@@ -2,8 +2,9 @@ const VehicleCard = ({ brand, model, price, color, category, image }) => {
   return (
     <div className="card vehicle-card">
       <div className="img-wrapper">
-        <img src={image} alt="vehicle" />
+        <img src={image.url} alt="vehicle" />
       </div>
+
       <div className="info-wrapper flex-col">
         <h3>Brand: {brand}</h3>
         <p>Model: {model}</p>
