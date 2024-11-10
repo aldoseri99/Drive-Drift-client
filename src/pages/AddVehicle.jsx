@@ -14,6 +14,27 @@ const AddVehicle = () => {
   }
 
   const [formValues, setFormValues] = useState(initialState)
+  const [image, setImage] = useState(null)
+  const [imageBase64, setImageBase64] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState(null)
+
+  // convert image file to base64
+  const setFileToBase64 = (file) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      setImageBase64(reader.result)
+      setFormValues({ ...formValues, image: reader.result })
+    }
+  }
+
+  // receive file from form
+  const handleImage = (e) => {
+    const file = e.target.files[0]
+    setImage(file)
+    setFileToBase64(file)
+  }
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -73,6 +94,17 @@ const AddVehicle = () => {
         </div>
         <div>
           <label className="form-label" htmlFor="">
+            Price
+          </label>
+          <input
+            className="form-control"
+            onChange={handleChange}
+            name="price"
+            type="text"
+          />
+        </div>
+        <div>
+          <label className="form-label" htmlFor="">
             Category
           </label>
           <input
@@ -91,6 +123,17 @@ const AddVehicle = () => {
             onChange={handleChange}
             name="description"
             type="text"
+          />
+        </div>
+        <div>
+          <label className="form-label" htmlFor="">
+            Image
+          </label>
+          <input
+            className="form-control"
+            name="image"
+            type="file"
+            onChange={handleImage}
           />
         </div>
         <input type="submit" className="btn btn-success" />
