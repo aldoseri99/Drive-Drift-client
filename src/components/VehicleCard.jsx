@@ -1,8 +1,8 @@
-const VehicleCard = ({ onClick, brand, model, price, color, category, image }) => {
+const VehicleCard = ({ brand, model, price, color, category, image }) => {
   return (
-    <div onClick={onClick} className="card vehicle-card">
+    <div className="card vehicle-card">
       <div className="img-wrapper">
-        <img src={image} alt="vehicle image" />
+        <img src={image} alt="vehicle" />
       </div>
       <div className="info-wrapper flex-col">
         <h3>{brand}</h3>
@@ -15,4 +15,4 @@ const VehicleCard = ({ onClick, brand, model, price, color, category, image }) =
   )
 }
 
-export default GameCard
+export default VehicleCard
