@@ -128,10 +128,23 @@ const App = () => {
               />
             }
           />
-          <Route 
-          path ='/user/me' 
-          element = {<UserProfile />}
-          
+          <Route
+            path="/user/me"
+            element={
+              <UserProfile
+                getBookings={getBookings}
+                bookings={bookings}
+                user={user}
+              />
+            }
+          />
+          <Route
+            path="/signIn"
+            element={<SignIn user={user} setUser={setUser} />}
+          />
+          <Route
+            path="/register"
+            element={<Register user={user} setUser={setUser} />}
           />
         </Routes>
       </main>
