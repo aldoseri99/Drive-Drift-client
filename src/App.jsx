@@ -32,38 +32,38 @@ const App = () => {
     localStorage.clear()
   }
 
-  // const getBookings = async () => {
-  //   try {
-  //     let res = await axios.get("http://localhost:3001/booking")
-  //     console.log("Fetched bookings:", res.data)
-  //     console.log(res.data)
-  //     setBookings(res.data)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+  const getBookings = async () => {
+    try {
+      let res = await axios.get("http://localhost:3001/booking")
+      console.log("Fetched bookings:", res.data)
+      console.log(res.data)
+      setBookings(res.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
-  // const getReviews = async () => {
-  //   try {
-  //     let res = await axios.get("http://localhost:3001/review")
-  //     console.log("Fetched reviews:", res.data)
-  //     console.log(res.data)
-  //     setReviews(res.data)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+  const getReviews = async () => {
+    try {
+      let res = await axios.get("http://localhost:3001/review")
+      console.log("Fetched reviews:", res.data)
+      console.log(res.data)
+      setReviews(res.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
-  // const getVehicles = async () => {
-  //   try {
-  //     let res = await axios.get("http://localhost:3001/vehicle")
-  //     console.log("Fetched Vehicles:", res.data)
-  //     console.log(res.data)
-  //     setVehicles(res.data)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+  const getVehicles = async () => {
+    try {
+      let res = await axios.get("http://localhost:3001/vehicle")
+      console.log("Fetched Vehicles:", res.data)
+      console.log(res.data)
+      setVehicles(res.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen)
