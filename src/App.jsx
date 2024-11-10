@@ -1,6 +1,5 @@
 import './App.css'
 // import { Route, Routes, useParams } from 'react-router-dom'
-// import { BrowserRouter } from 'react-router-dom'
 // import Home from './components/Home'
 // import Nav from '/components/Nav'
 // import Footer from './components/Footer'
@@ -13,8 +12,10 @@ import './App.css'
 
 
 const App = () => {
+  
   return(
     <div>hi negros </div>
+    
   )
 }
   
