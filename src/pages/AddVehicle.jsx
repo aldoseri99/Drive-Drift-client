@@ -36,33 +36,64 @@ const AddVehicle = () => {
   }
 
   return (
-    <div>
+    <div className="form-container">
       <form onSubmit={handleSubmit} action="">
         <div>
-          <label htmlFor="">Brand</label>
-          <input onChange={handleChange} name="brand" type="text" />
+          <label className="form-label" htmlFor="">
+            Brand
+          </label>
+          <input
+            className="form-control"
+            onChange={handleChange}
+            name="brand"
+            type="text"
+          />
         </div>
         <div>
-          <label htmlFor="">Model</label>
-          <input onChange={handleChange} name="model" type="text" />
+          <label className="form-label" htmlFor="">
+            Model
+          </label>
+          <input
+            className="form-control"
+            onChange={handleChange}
+            name="model"
+            type="text"
+          />
         </div>
         <div>
-          <label htmlFor="">Price Per Day</label>
-          <input onChange={handleChange} name="price" type="number" />
+          <label className="form-label" htmlFor="">
+            Color
+          </label>
+          <input
+            className="form-control"
+            onChange={handleChange}
+            name="color"
+            type="text"
+          />
         </div>
         <div>
-          <label htmlFor="">Description</label>
-          <input onChange={handleChange} name="description" type="text" />
+          <label className="form-label" htmlFor="">
+            Category
+          </label>
+          <input
+            className="form-control"
+            onChange={handleChange}
+            name="category"
+            type="text"
+          />
         </div>
         <div>
-          <label htmlFor="">Color</label>
-          <input onChange={handleChange} name="color" type="text" />
+          <label className="form-label" htmlFor="">
+            Description
+          </label>
+          <textarea
+            className="form-control"
+            onChange={handleChange}
+            name="description"
+            type="text"
+          />
         </div>
-        <div>
-          <label htmlFor="">Category</label>
-          <input onChange={handleChange} name="category" type="text" />
-        </div>
-        <input type="submit" className="btn" />
+        <input type="submit" className="btn btn-success" />
       </form>
     </div>
   )

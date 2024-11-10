@@ -109,9 +109,10 @@ const App = () => {
             }
           />
           <Route
-            path="/vehicles/:viewId"
+            path="/vehicles"
             element={
               <ViewVehicles
+                getVehicles={getVehicles}
                 getBookings={getBookings}
                 bookings={bookings}
                 setBookings={setBookings}
