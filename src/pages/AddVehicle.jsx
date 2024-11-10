@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { setVehicle } from "../services/vehicleService"
-import axios from "axios"
 
 const AddVehicle = () => {
   let navigate = useNavigate()
@@ -46,6 +45,10 @@ const AddVehicle = () => {
         <div>
           <label htmlFor="">Model</label>
           <input onChange={handleChange} name="model" type="text" />
+        </div>
+        <div>
+          <label htmlFor="">Price Per Day</label>
+          <input onChange={handleChange} name="price" type="number" />
         </div>
         <div>
           <label htmlFor="">Description</label>
