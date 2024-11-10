@@ -1,19 +1,19 @@
 import './App.css'
-// import { Route, Routes, useParams } from 'react-router-dom'
-// import axios from 'axios'
+import { Route, Routes } from 'react-router-dom'
+import axios from 'axios'
 import { useState, useEffect } from 'react'
-// import Home from './components/Home'
-// import Nav from '/components/Nav'
-// import Footer from './components/Footer'
-// import Profile from './components/Profile'
-// import Reviews from './components/Reviews'
-// import ViewVehicles from './components/ViewVehicles'
-// import VehicleDetail from './components/VehicleDetail'
-// import SignIn from './pages/SignIn'
-// import SignUp from './pages/SignUp'
-// import { checkSession } from './services/Auth
-// import UserProfile from './components/UserProfile
-
+import ViewVehicles from './components/ViewVehicles'
+import Home from './components/Home'
+import Nav from './components/Nav'
+import Footer from './components/Footer'
+import Profile from './components/Profile'
+import Reviews from './components/Reviews'
+import VehicleDetail from './components/VehicleDetail'
+import SignIn from './pages/SignIn'
+import Register from './pages/Register'
+import { CheckSession } from './services/Auth'
+import UserProfile from './components/UserProfile'
+import SideBar from './components/SideBar'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -22,7 +22,7 @@ const App = () => {
   const [bookings, setBookings] = useState([])
   const [reviews, setReviews] = useState([])
   const [vehicles, setVehicles] = useState([])
-
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   const handleLogout = () => {
     //Reset all auth related state and clear localStorage
@@ -63,6 +63,10 @@ const App = () => {
     }
   }
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen)
+  }
+
   const checkToken = async () => {
     //If a token exists, send token to localStorage to persist logged in user
     const user = await CheckSession()
@@ -80,12 +84,59 @@ const App = () => {
     getReviews()
     getVehicles()
   })
-  
-  return(
-    <div>hello my friends </div>
-    
+
+  return (
+    <div className="App">
+      <Nav
+        user={user}
+        handleLogout={handleLogout}
+        toggleSidebar={toggleSidebar}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
+      <SideBar
+        isOpen={isSidebarOpen}
+        toggleSidebar={toggleSidebar}
+        booking={bookings}
+      />
+      <main className={isSidebarOpen ? 'shifted' : ''}>
+        <Routes>
+          <Route path="/user" element={<SideBar user={user} />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                getBookings={getBookings}
+                bookings={bookings}
+                setBookings={setBookings}
+                getReviews={getReviews}
+                reviews={reviews}
+                setReviews={setReviews}
+                searchTerm={searchTerm}
+                user={user}
+              />
+            }
+          />
+          <Route
+            path="/vehicles/:viewId"
+            element={
+              <ViewVehicles
+                getBookings={getBookings}
+                bookings={bookings}
+                setBookings={setBookings}
+                user={user}
+              />
+            }
+          />
+          <Route 
+          path ='/user/me' 
+          element = {<UserProfile />}
+          
+          />
+        </Routes>
+      </main>
+    </div>
   )
 }
-  
 
 export default App
