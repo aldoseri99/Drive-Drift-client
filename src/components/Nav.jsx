@@ -1,8 +1,13 @@
-
 const Nav = () => {
-
-  return(
-    <div>Nav</div>
+  return (
+    <nav className="navbar navbar-dark">
+      <a className="btn btn-dark" href="/">
+        Home
+      </a>
+      <a className="btn btn-dark" href="/addvehicle">
+        Add Vehicle
+      </a>
+    </nav>
   )
 }
 
