@@ -13,6 +13,9 @@ const Nav = () => {
       <a className="btn btn-dark" href="/register">
         Register
       </a>
+      <a className="btn btn-dark" href="/signIn">
+        SignIn
+      </a>
     </nav>
   )
 }
