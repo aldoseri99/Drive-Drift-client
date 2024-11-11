@@ -49,7 +49,7 @@ const Register = () => {
     try {
       const response = await RegisterUser(formValues)
       console.log(response)
-      navigate("/signup")
+      navigate("/signIn")
     } catch (error) {}
   }
 
