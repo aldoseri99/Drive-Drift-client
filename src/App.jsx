@@ -15,6 +15,8 @@ import { CheckSession } from "./services/Auth"
 import UserProfile from "./components/UserProfile"
 import SideBar from "./components/SideBar"
 import AddVehicle from "./pages/AddVehicle"
+import AddInsurance from "./pages/AddInsurance"
+
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -100,6 +102,7 @@ const App = () => {
         <Routes>
           <Route path="/user" element={<SideBar user={user} />} />
           <Route path="/addvehicle" element={<AddVehicle />} />
+          <Route path="/addinsurance" element={<AddInsurance />} />
           <Route path="/viewvehicles" element={<ViewVehicles />} />
           <Route
             path="/"

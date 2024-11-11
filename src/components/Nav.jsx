@@ -12,6 +12,9 @@ const Nav = () => {
 
         View All Vehicles
       </a>
+      <a className="btn btn-dark" href="/addinsurance">
+        Add Insurance
+      </a>
       <a className="btn btn-dark" href="/register">
         Register
       </a>
