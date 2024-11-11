@@ -6,7 +6,7 @@ const Search = ({ searchTerm, setSearchTerm }) => {
   return (
     <input
       type="text"
-      placeholder="Search Communities..."
+      placeholder="Search Vehicles..."
       value={searchTerm}
       onChange={handleChange}
       className="search-input"
