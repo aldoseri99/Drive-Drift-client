@@ -9,11 +9,12 @@ export const setVehicle = async (vehicleData) => {
     throw error
   }
 }
-// export const postVehicle = async () => {
-//   try {
-//     const res = await Client.get("/vehicle")
-//     return res.data
-//   } catch (error) {
-//     throw error
-//   }
-// }
+
+export const postVehicle = async () => {
+  try {
+    const res = await Client.get("/vehicle")
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
