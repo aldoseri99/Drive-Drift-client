@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { SignInUser } from '../services/Auth'
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { SignInUser } from "../services/Auth"
+import "./CSS/SignIn.css"
 
 const SignIn = ({ user, setUser }) => {
   let navigate = useNavigate()
 
-  let initialState = { email: '', password: '' }
+  let initialState = { email: "", password: "" }
   const [formValues, setFormValues] = useState(initialState)
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -20,18 +21,20 @@ const SignIn = ({ user, setUser }) => {
       const payload = await SignInUser(formValues)
       setFormValues(initialState)
       console.log("payload is", payload)
-      
+
       setUser(payload)
-      navigate('/')
-      localStorage.setItem('token', response.data.token);
+      navigate("/")
+      localStorage.setItem("token", response.data.token)
     } catch (error) {
       // Display error message to user
-      setErrorMessage('Failed to sign in. Please check your email and password.')
+      setErrorMessage(
+        "Failed to sign in. Please check your email and password."
+      )
     }
   }
 
   return (
-    <div className="signin col">
+    <div className="signin-col">
       <div className="card-overlay1 centered">
         <form className="col" onSubmit={handleSubmit}>
           {errorMessage && <div className="error-message">{errorMessage}</div>}
@@ -52,6 +55,7 @@ const SignIn = ({ user, setUser }) => {
               onChange={handleChange}
               type="password"
               name="password"
+              placeholder="Password"
               value={formValues.password}
               required
             />

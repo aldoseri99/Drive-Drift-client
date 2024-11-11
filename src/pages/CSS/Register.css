@@ -1,0 +1,80 @@
+.Register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card-overlay {
+  position: relative;
+  background-color: #ffffff96;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.col {
+  width: 100pc;
+  max-width: 400px;
+}
+
+.input-wrapper {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #000a14;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus {
+  border-color: #999;
+  outline: none;
+}
+
+.image-preview {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.image-preview img {
+  display: block;
+  border-radius: 50%;
+}
+
+.submit {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #000a14;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.submit:hover {
+  background-color: #1c9eb2;
+}
+
+.submit[disabled] {
+  background-color: #ccc;
+  cursor: default;
+}

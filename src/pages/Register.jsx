@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { RegisterUser } from "../services/Auth"
+import "./CSS/Register.css"
 
 const Register = () => {
   let navigate = useNavigate()
@@ -54,13 +55,9 @@ const Register = () => {
   }
 
   return (
-    <div className="signin col ">
+    <div className="Register">
       <div className="card-overlay centered">
-        <form
-          className="col"
-          onSubmit={handleSubmit}
-          // encType="multipart/form-data"
-        >
+        <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="name">Username</label>
             <input
@@ -89,6 +86,7 @@ const Register = () => {
               onChange={handleChange}
               type="password"
               name="password"
+              placeholder="Password"
               value={formValues.password}
               required
             />

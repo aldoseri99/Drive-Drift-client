@@ -2,16 +2,19 @@
   padding: 0;
   margin: 0;
 }
+
+body {
+  background-image: url("/Images/Background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 } */
-
-body {
-  background-color: black;
-}
 
 /* .Main {
   display: flex;
