@@ -7,19 +7,19 @@ body {
   background-color: black;
 }
 
-.Main {
+/* .Main {
   display: flex;
   align-items: center;
   height: fit-content;
   background-color: rgb(0, 0, 0);
-}
+} */
 
-.myVideo {
+/* .myVideo {
   position: fixed;
   width: 100vw;
   bottom: 0;
   opacity: 30%;
-}
+} */
 
 .Name h1 {
   color: white;
