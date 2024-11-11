@@ -93,7 +93,7 @@ const App = () => {
         <Routes>
           <Route path="/user" element={<SideBar user={user} />} />
           <Route path="/addvehicle" element={<AddVehicle />} />
-          <Route path="/viewVehicles" element={<ViewVehicles />} />
+          <Route path="/viewvehicles" element={<ViewVehicles />} />
           <Route
             path="/"
             element={
