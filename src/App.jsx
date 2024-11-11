@@ -69,11 +69,18 @@ const App = () => {
   }
 
   const checkToken = async () => {
-    //If a token exists, send token to localStorage to persist logged in user
     const user = await CheckSession()
-    console.log(user)
-    setUser(user.data)
+    setUser(user)
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    console.log(token)
+
+    if (token) {
+      checkToken()
+    }
+  }, [])
 
   return (
     <div className="App">
