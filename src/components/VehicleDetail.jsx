@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { detailVehicle, setVehicle } from "../services/vehicleService"
+import { Link } from "react-router-dom"
 
 const VehicleDetail = () => {
   const [vehicle, setVehicle] = useState()
@@ -27,6 +28,9 @@ const VehicleDetail = () => {
           <p>{vehicle.color}</p>
           <p>{vehicle.category}</p>
           <p>{vehicle.description}</p>
+          <Link className="btn btn-primary" to={`/booking/${vehicle._id}`}>
+            Book
+          </Link>
         </div>
       ) : null}
     </>
