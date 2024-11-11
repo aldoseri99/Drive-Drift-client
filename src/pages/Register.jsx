@@ -1,48 +1,56 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { RegisterUser } from '../services/Auth'
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { RegisterUser } from "../services/Auth"
 
 const Register = () => {
   let navigate = useNavigate()
 
   const initialState = {
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   }
   const [formValues, setFormValues] = useState(initialState)
   const [previewImage, setPreviewImage] = useState(null)
+  const [image, setImage] = useState(null)
+  const [imageBase64, setImageBase64] = useState("")
+
+  // convert image file to base64
+  const setFileToBase64 = (file) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      setImageBase64(reader.result)
+      setFormValues({ ...formValues, image: reader.result })
+    }
+  }
+
+  // receive file from form
+  const handleImage = (e) => {
+    const file = e.target.files[0]
+    setImage(file)
+    setFileToBase64(file)
+  }
 
   const handleChange = (e) => {
-    if (e.target.name === 'image') {
-      console.log(e.target.files[0].name)
+    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+    console.log(e.target.name, e.target.value)
 
-      setFormValues({ ...formValues, image: e.target.files[0] })
-      setPreviewImage(URL.createObjectURL(e.target.files[0]))
-    } else {
-      setFormValues({ ...formValues, [e.target.name]: e.target.value })
-    }
+    console.log("Updated formValues:", {
+      ...formValues,
+      [e.target.name]: e.target.value,
+    })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const formData = new FormData()
-    formData.append('image', formValues.image)
-    formData.append('name', formValues.name)
-    formData.append('email', formValues.email)
-    formData.append('password', formValues.password)
-    formData.append('confirmPassword', formValues.confirmPassword)
-    // Object.entries(formValues).forEach((value) => {
-    //   console.log(value)
-    //   console.log(formData)
-    // })
-    // return
-    console.log('Register FormData: ', formData)
-    await RegisterUser(formData)
-    setFormValues(initialState)
-    setPreviewImage(null)
-    navigate('/signIn')
+    console.log("submitting")
+    try {
+      const response = await RegisterUser(formValues)
+      console.log(response)
+      navigate("/signup")
+    } catch (error) {}
   }
 
   return (
@@ -98,7 +106,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="image">Profile Picture</label>
             <input
-              onChange={handleChange}
+              onChange={handleImage}
               type="file"
               name="image"
               accept="image/*"
@@ -109,7 +117,7 @@ const Register = () => {
               <img
                 src={previewImage}
                 alt="Preview"
-                style={{ maxWidth: '200px', maxHeight: '200px' }}
+                style={{ maxWidth: "200px", maxHeight: "200px" }}
               />
             </div>
           )}
@@ -118,6 +126,7 @@ const Register = () => {
             disabled={
               !formValues.email ||
               (!formValues.password &&
+                !formValues.confirmPassword &&
                 formValues.confirmPassword === formValues.password)
             }
           >
