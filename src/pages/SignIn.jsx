@@ -1,10 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { SignInUser } from "../services/Auth"
-<<<<<<< HEAD
 import "./CSS/SignIn.css"
-=======
->>>>>>> 7ba78712acb7ec6ad1ff35494a8d662900236e69
 
 const SignIn = ({ user, setUser }) => {
   let navigate = useNavigate()
@@ -23,14 +20,11 @@ const SignIn = ({ user, setUser }) => {
     try {
       const payload = await SignInUser(formValues)
       console.log("payload is", payload)
-<<<<<<< HEAD
-=======
       if (payload.message) {
         setErrorMessage("Error")
         return
       }
       setFormValues(initialState)
->>>>>>> 7ba78712acb7ec6ad1ff35494a8d662900236e69
 
       setUser(payload)
       navigate("/")

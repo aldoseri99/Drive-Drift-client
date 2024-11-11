@@ -10,7 +10,7 @@ const Nav = () => {
         Add Vehicle
       </a>
 
-      <a className="btn btn-dark" href="/viewvehicles">
+      <a className="btnNav" href="/viewvehicles">
         View All Vehicles
       </a>
       <a className="btnNav" href="/register">
