@@ -52,7 +52,7 @@ const AddVehicle = () => {
     try {
       const response = await setVehicle(formValues)
       console.log(response)
-      navigate("/")
+      navigate("/vehicle")
     } catch (error) {}
   }
 

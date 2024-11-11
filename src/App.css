@@ -7,7 +7,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
+} */
 
 body {
   background-color: black;
@@ -39,4 +39,8 @@ body {
 
 .read-the-docs {
   color: #888;
+}
+
+.vehicle-card img {
+  width: 400px;
 }
