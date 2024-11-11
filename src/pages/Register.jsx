@@ -45,22 +45,34 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log("submitting")
+
+    // Check if passwords match
+    if (formValues.password !== formValues.confirmPassword) {
+      alert("Passwords do not match.")
+      return
+    }
+
+    // Check if password is at least 8 characters
+    if (formValues.password.length < 8) {
+      alert("Password must be at least 8 characters long.")
+      return
+    }
+
+    console.log("Submitting")
+
     try {
       const response = await RegisterUser(formValues)
       console.log(response)
       navigate("/signIn")
-    } catch (error) {}
+    } catch (error) {
+      console.error("Registration failed", error)
+    }
   }
 
   return (
     <div className="signin col ">
       <div className="card-overlay centered">
-        <form
-          className="col"
-          onSubmit={handleSubmit}
-          // encType="multipart/form-data"
-        >
+        <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="name">Username</label>
             <input
@@ -124,10 +136,11 @@ const Register = () => {
           <button
             className="submit"
             disabled={
+              !formValues.name ||
               !formValues.email ||
-              (!formValues.password &&
-                !formValues.confirmPassword &&
-                formValues.confirmPassword === formValues.password)
+              !formValues.password ||
+              !formValues.confirmPassword ||
+              formValues.password !== formValues.confirmPassword
             }
           >
             Register
