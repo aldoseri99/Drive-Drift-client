@@ -1,28 +1,32 @@
-import { Link } from "react-router-dom"
-import VehicleCard from "./VehicleCard"
-import { useEffect, useState } from "react"
-import axios from "axios"
+import { Link } from "react-router-dom";
+import VehicleCard from "./VehicleCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Search from './Search'
 
 const ViewVehicles = () => {
-  const [vehicles, setVehicles] = useState()
+  const [vehicles, setVehicles] = useState([]);
+
   useEffect(() => {
     const getVehicles = async () => {
       try {
-        let res = await axios.get("http://localhost:3001/vehicle")
-        console.log("Fetched Vehicles:", res.data)
-        console.log(res.data)
-        setVehicles(res.data)
+        const res = await axios.get("http://localhost:3001/vehicle");
+        setVehicles(res.data);
       } catch (err) {
-        console.log(err)
+        console.error("Error fetching vehicles:", err);
       }
-    }
-    getVehicles()
-  }, [])
+    };
+    getVehicles();
+  }, []);
+
   return (
     <div className="viewVehicles">
       <h2>View All Vehicles</h2>
+    <div className='searchbar'>
+    <Search />
+    </div>
       <section className="container-grid">
-        {vehicles?.map((vehicle) => (
+        {vehicles.map((vehicle) => (
           <Link to={`/vehicles/${vehicle._id}`} key={vehicle._id}>
             <VehicleCard
               brand={vehicle.brand}
@@ -36,7 +40,7 @@ const ViewVehicles = () => {
         ))}
       </section>
     </div>
-  )
-}
-// underscore
-export default ViewVehicles
+  );
+};
+
+export default ViewVehicles;
