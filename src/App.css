@@ -1,46 +1,68 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+a {
+  text-decoration: none;
+}
+
+.vehicle-card-container {
+  display: flex; /* Enable flexbox */
+  flex-wrap: wrap; /* Allow wrapping to the next line */
+  justify-content: space-around; /* Space between cards */
+  align-items: flex-start; /* Align items at the start of the container */
+  padding: 20px; /* Add some padding around the container */
+}
+
+.container-grid {
+  display: flex; /* Use flexbox for horizontal layout */
+  flex-wrap: wrap; /* Allow wrapping to the next line */
+  justify-content: center;
+
+  padding: 20px; /* Add padding around the container */
+}
+
+.vehicle-card {
+  max-width: 300px;
+  max-height: 380px;
+  width: 330px;
+  border-radius: 20px;
+  background-color: #1b1b1b;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 20px; /* Margin between cards */
+  overflow: hidden; /* Ensure overflow is hidden */
+  color: white;
+}
+
+.vehicle-card:hover {
+  opacity: 0.8;
+}
+
+.vehicle-card .img-wrapper {
+  width: 100%; /* Ensure it takes full width */
+  height: 200px; /* Set a fixed height */
+  position: relative; /* Allow positioning of the image */
+}
+
+.vehicle-card .img-wrapper img {
+  position: absolute; /* Position absolutely within the wrapper */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  width: 100%; /* Make it cover the width */
+  height: auto; /* Maintain aspect ratio */
+  min-height: 100%; /* Ensure it covers the height */
+  min-width: 100%; /* Ensure it covers the width */
+  transform: translate(-50%, -50%); /* Center the image */
+  object-fit: cover; /* Cover the area without stretching */
+}
+
+.vehicle-card .info-wrapper {
+  padding: 0.5em;
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Arrange items in a column */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text */
+}
+
+.viewVehicles {
   text-align: center;
-} */
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-.vehicle-card img {
-  width: 400px;
+  margin-top: 20px;
 }
