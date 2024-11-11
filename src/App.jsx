@@ -69,11 +69,18 @@ const App = () => {
   }
 
   const checkToken = async () => {
-    //If a token exists, send token to localStorage to persist logged in user
     const user = await CheckSession()
-    console.log(user)
-    setUser(user.data)
+    setUser(user)
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    console.log(token)
+
+    if (token) {
+      checkToken()
+    }
+  }, [])
 
   return (
     <div className="App">
@@ -93,7 +100,7 @@ const App = () => {
         <Routes>
           <Route path="/user" element={<SideBar user={user} />} />
           <Route path="/addvehicle" element={<AddVehicle />} />
-          <Route path="/viewVehicles" element={<ViewVehicles />} />
+          <Route path="/viewvehicles" element={<ViewVehicles />} />
           <Route
             path="/"
             element={
@@ -121,6 +128,7 @@ const App = () => {
               />
             }
           />
+          <Route path="/vehicles/:vehicle_id" element={<VehicleDetail />} />
           <Route
             path="/user/me"
             element={

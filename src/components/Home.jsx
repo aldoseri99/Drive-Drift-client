@@ -3,7 +3,7 @@ import { auto } from "@cloudinary/url-gen/actions/resize"
 import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity"
 import { AdvancedImage } from "@cloudinary/react"
 
-const Home = () => {
+const Home = ({ user }) => {
   const cld = new Cloudinary({ cloud: { cloudName: "drd89nnxf" } })
 
   // Use this sample image or upload your own via the Media Explorer
@@ -13,7 +13,12 @@ const Home = () => {
     .quality("auto")
     .resize(auto().gravity(autoGravity()).width(500).height(500)) // Transform the image: auto-crop to square aspect_ratio
 
-  return
+  return (
+    <div>
+      {user ? <h1>hello {user.name}</h1> : null}
+      <AdvancedImage cldImg={img} />
+    </div>
+  )
 }
 
 export default Home

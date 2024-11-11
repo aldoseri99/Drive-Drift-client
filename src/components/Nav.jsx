@@ -9,7 +9,8 @@ const Nav = () => {
       <a className="btnNav" href="/addvehicle">
         Add Vehicle
       </a>
-      <a className="btnNav" href="/viewvehicles">
+
+      <a className="btn btn-dark" href="/viewvehicles">
         View All Vehicles
       </a>
       <a className="btnNav" href="/register">

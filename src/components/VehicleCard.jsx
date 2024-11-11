@@ -1,17 +1,14 @@
 const VehicleCard = ({ brand, model, price, color, category, image }) => {
   return (
     <div className="card vehicle-card">
-      <img src={image.url} alt="vehicle" />
-
+      <div className="img-wrapper">
+        <img src={image.url} alt={`${brand} ${model}`} />
+      </div>
       <div className="info-wrapper flex-col">
-        <h3>{brand}</h3>
-        <p>{model}</p>
-        <p>{price}</p>
-        <p>{color}</p>
-        <p>{category}</p>
+        {brand} {model}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default VehicleCard
+export default VehicleCard;
