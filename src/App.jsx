@@ -1,20 +1,20 @@
-
-import './App.css'
-import { Route, Routes } from 'react-router-dom'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-import ViewVehicles from './components/ViewVehicles'
-import Home from './components/Home'
-import Nav from './components/Nav'
-import Footer from './components/Footer'
-import Profile from './components/Profile'
-import Reviews from './components/Reviews'
-import VehicleDetail from './components/VehicleDetail'
-import SignIn from './pages/SignIn'
-import Register from './pages/Register'
-import { CheckSession } from './services/Auth'
-import UserProfile from './components/UserProfile'
-import SideBar from './components/SideBar'
+import "./App.css"
+import { Route, Routes } from "react-router-dom"
+import axios from "axios"
+import { useState, useEffect } from "react"
+import ViewVehicles from "./components/ViewVehicles"
+import Home from "./components/Home"
+import Nav from "./components/Nav"
+import Footer from "./components/Footer"
+import Profile from "./components/Profile"
+import Reviews from "./components/Reviews"
+import VehicleDetail from "./components/VehicleDetail"
+import SignIn from "./pages/SignIn"
+import Register from "./pages/Register"
+import { CheckSession } from "./services/Auth"
+import UserProfile from "./components/UserProfile"
+import SideBar from "./components/SideBar"
+import AddVehicle from "./pages/AddVehicle"
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -24,7 +24,6 @@ const App = () => {
   const [reviews, setReviews] = useState([])
   const [vehicles, setVehicles] = useState([])
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
-
 
   const handleLogout = () => {
     //Reset all auth related state and clear localStorage
@@ -76,7 +75,6 @@ const App = () => {
     setUser(user.data)
   }
 
-
   return (
     <div className="App">
       <Nav
@@ -91,9 +89,10 @@ const App = () => {
         toggleSidebar={toggleSidebar}
         booking={bookings}
       />
-      <main className={isSidebarOpen ? 'shifted' : ''}>
+      <main className={isSidebarOpen ? "shifted" : ""}>
         <Routes>
           <Route path="/user" element={<SideBar user={user} />} />
+          <Route path="/addvehicle" element={<AddVehicle />} />
           <Route
             path="/"
             element={
@@ -110,9 +109,10 @@ const App = () => {
             }
           />
           <Route
-            path="/vehicles/:viewId"
+            path="/vehicles"
             element={
               <ViewVehicles
+                getVehicles={getVehicles}
                 getBookings={getBookings}
                 bookings={bookings}
                 setBookings={setBookings}
@@ -141,7 +141,6 @@ const App = () => {
         </Routes>
       </main>
     </div>
-
   )
 }
 
