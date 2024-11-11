@@ -15,6 +15,7 @@ import { CheckSession } from "./services/Auth"
 import UserProfile from "./components/UserProfile"
 import SideBar from "./components/SideBar"
 import AddVehicle from "./pages/AddVehicle"
+import AddBooking from "./pages/AddBooking"
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -147,6 +148,10 @@ const App = () => {
             path="/register"
             element={<Register user={user} setUser={setUser} />}
           />
+          <Route
+            path="/booking/:vehicle_id"
+            element={<AddBooking user={user} />}
+          ></Route>
         </Routes>
       </main>
     </div>
