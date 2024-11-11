@@ -128,6 +128,7 @@ const App = () => {
               />
             }
           />
+          <Route path="/vehicles/:vehicle_id" element={<VehicleDetail />} />
           <Route
             path="/user/me"
             element={
