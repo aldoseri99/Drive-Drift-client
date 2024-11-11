@@ -18,3 +18,11 @@ export const postVehicle = async () => {
     throw error
   }
 }
+export const detailVehicle = async (vehicle_id) => {
+  try {
+    const res = await Client.get(`/vehicle/${vehicle_id}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
