@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { SignInUser } from '../services/Auth'
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { SignInUser } from "../services/Auth"
 
 const SignIn = ({ user, setUser }) => {
   let navigate = useNavigate()
 
-  let initialState = { email: '', password: '' }
+  let initialState = { email: "", password: "" }
   const [formValues, setFormValues] = useState(initialState)
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -18,15 +18,21 @@ const SignIn = ({ user, setUser }) => {
     console.log(formValues)
     try {
       const payload = await SignInUser(formValues)
-      setFormValues(initialState)
       console.log("payload is", payload)
-      
+      if (payload.message) {
+        setErrorMessage("Error")
+        return
+      }
+      setFormValues(initialState)
+
       setUser(payload)
-      navigate('/')
-      localStorage.setItem('token', response.data.token);
+      navigate("/")
+      localStorage.setItem("token", response.data.token)
     } catch (error) {
       // Display error message to user
-      setErrorMessage('Failed to sign in. Please check your email and password.')
+      setErrorMessage(
+        "Failed to sign in. Please check your email and password."
+      )
     }
   }
 
@@ -56,6 +62,7 @@ const SignIn = ({ user, setUser }) => {
               required
             />
           </div>
+          <div>{errorMessage}</div>
           <button
             className="submit"
             disabled={!formValues.email || !formValues.password}
