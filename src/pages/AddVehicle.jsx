@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { setVehicle } from "../services/vehicleService"
+import "./CSS/AddVehicle.css"
 
 const AddVehicle = () => {
   let navigate = useNavigate()
@@ -57,7 +58,7 @@ const AddVehicle = () => {
   }
 
   return (
-    <div className="form-container">
+    <div className="form-container-Add">
       <form onSubmit={handleSubmit} action="">
         <div>
           <label className="form-label" htmlFor="">
@@ -136,7 +137,7 @@ const AddVehicle = () => {
             onChange={handleImage}
           />
         </div>
-        <input type="submit" className="btn btn-success" />
+        <input type="submit" className="btn-success" />
       </form>
     </div>
   )
