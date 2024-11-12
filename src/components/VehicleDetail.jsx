@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { detailVehicle, setVehicle } from "../services/vehicleService"
+import { Link } from "react-router-dom"
+import AddReview from "./AddReview"
+import ReviewsCard from "./ReviewsCard"
 
-const VehicleDetail = () => {
+const VehicleDetail = ({ user }) => {
   const [vehicle, setVehicle] = useState()
   const { vehicle_id } = useParams()
-  console.log(vehicle_id)
-
   useEffect(() => {
     const getDetails = async () => {
       const response = await detailVehicle(vehicle_id)
       setVehicle(response)
-      console.log(response)
     }
     getDetails()
   }, [])
+
   return (
     <>
       {vehicle ? (
@@ -27,6 +28,11 @@ const VehicleDetail = () => {
           <p>{vehicle.color}</p>
           <p>{vehicle.category}</p>
           <p>{vehicle.description}</p>
+          <Link className="btn btn-primary" to={`/booking/${vehicle._id}`}>
+            Book
+          </Link>
+          <AddReview user={user} vehicle={vehicle} />
+          <ReviewsCard vehicle={vehicle} />
         </div>
       ) : null}
     </>

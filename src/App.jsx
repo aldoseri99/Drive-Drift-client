@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import ViewVehicles from './components/ViewVehicles'
+import ViewInsurances from './components/ViewInsurances'
 import Home from './components/Home'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
@@ -18,11 +19,12 @@ import AddVehicle from './pages/AddVehicle'
 import AddInsurance from './pages/AddInsurance'
 import VehicleCategory from './components/VehicleCategory'
 import AddCategory from './pages/AddCategory'
+import AddBooking from "./pages/AddBooking"
+import AddInsurance from "./pages/AddInsuracne"
 
 const App = () => {
   const [user, setUser] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
-  const [users, setUsers] = useState([])
   const [bookings, setBookings] = useState([])
   const [reviews, setReviews] = useState([])
   const [vehicles, setVehicles] = useState([])
@@ -31,7 +33,6 @@ const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   const handleLogout = () => {
-    //Reset all auth related state and clear localStorage
     setUser(null)
     localStorage.clear()
   }
@@ -116,6 +117,7 @@ const App = () => {
         <Routes>
           <Route path="/user" element={<SideBar user={user} />} />
           <Route path="/addvehicle" element={<AddVehicle />} />
+          <Route path="/addinsurance" element={<AddInsurance />} />
           <Route path="/addcategory" element={<AddCategory />} />
 
           <Route
@@ -133,6 +135,7 @@ const App = () => {
           />
           <Route path="/addinsurance" element={<AddInsurance />} />
           <Route path="/viewvehicles/:categoryId" element={<ViewVehicles />} />
+          <Route path="/viewinsurance" element={<ViewInsurances />} />
           <Route
             path="/"
             element={
@@ -160,7 +163,10 @@ const App = () => {
               />
             }
           />
-          <Route path="/vehicles/:vehicle_id" element={<VehicleDetail />} />
+          <Route
+            path="/vehicles/:vehicle_id"
+            element={<VehicleDetail user={user} />}
+          />
           <Route
             path="/user/me"
             element={
@@ -179,6 +185,10 @@ const App = () => {
             path="/register"
             element={<Register user={user} setUser={setUser} />}
           />
+          <Route
+            path="/booking/:vehicle_id"
+            element={<AddBooking user={user} />}
+          ></Route>
         </Routes>
       </main>
     </div>
