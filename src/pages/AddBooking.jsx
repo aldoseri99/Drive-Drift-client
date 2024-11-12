@@ -22,7 +22,7 @@ const AddBooking = ({ user }) => {
     const initialState = {
       startDate: "",
       endDate: "",
-      totalPrice: 12,
+      totalPrice: 0,
       status: "pending",
       insuranceId: "",
       user: user.id,
