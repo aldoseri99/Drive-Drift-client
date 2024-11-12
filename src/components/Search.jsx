@@ -3,8 +3,6 @@ const Search = ({ searchTerm, setSearchTerm }) => {
     setSearchTerm(event.target.value) // Update the search term in the parent component
   }
 
-  
-
   return (
     <input
       type="text"
