@@ -20,14 +20,12 @@ import AddBooking from "./pages/AddBooking"
 const App = () => {
   const [user, setUser] = useState(null)
   const [searchTerm, setSearchTerm] = useState("")
-  const [users, setUsers] = useState([])
   const [bookings, setBookings] = useState([])
   const [reviews, setReviews] = useState([])
   const [vehicles, setVehicles] = useState([])
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   const handleLogout = () => {
-    //Reset all auth related state and clear localStorage
     setUser(null)
     localStorage.clear()
   }
@@ -129,7 +127,10 @@ const App = () => {
               />
             }
           />
-          <Route path="/vehicles/:vehicle_id" element={<VehicleDetail />} />
+          <Route
+            path="/vehicles/:vehicle_id"
+            element={<VehicleDetail user={user} />}
+          />
           <Route
             path="/user/me"
             element={
