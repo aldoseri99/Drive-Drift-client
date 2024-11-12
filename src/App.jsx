@@ -132,7 +132,7 @@ const App = () => {
             }
           />
           <Route path="/addinsurance" element={<AddInsurance />} />
-          <Route path="/viewvehicles" element={<ViewVehicles />} />
+          <Route path="/viewvehicles/:categoryId" element={<ViewVehicles />} />
           <Route
             path="/"
             element={

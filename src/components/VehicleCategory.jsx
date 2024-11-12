@@ -32,8 +32,8 @@ const VehicleCategory = () => {
       </div>
       <section className="container-grid">
         {filteredCategories.map((category) => (
-          <Link to={`/viewVehicles/${vehicle._id}`} key={vehicles._id}>
-            <ViewVehicles />
+          <Link to={`/viewVehicles/${category._id}`} key={category._id}>
+            <CategoryCard category={category} />
           </Link>
         ))}
       </section>

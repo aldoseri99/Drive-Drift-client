@@ -1,18 +1,33 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import VehicleCard from './VehicleCard'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Search from './Search'
 
 const ViewVehicles = ({}) => {
+  const { categoryId } = useParams()
   const [vehicles, setVehicles] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
+  const [category, setCategory] = useState(null)
 
   useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const res = await axios.get(`http://localhost:3001/category/${categoryId}`)
+        setCategory(res.data)
+      } catch (err) {
+        console.log('Error fetching categories:', err)
+      }
+    }
+    getCategories()
     const getVehicles = async () => {
       try {
         const res = await axios.get('http://localhost:3001/vehicle')
-        setVehicles(res.data)
+        const filteredVehicles = res.data.filter(
+          (vehicle) => vehicle.category === categoryId
+        )
+        setVehicles(filteredVehicles)
+        console.log(filteredVehicles)
       } catch (err) {
         console.error('Error fetching vehicles:', err)
       }
@@ -28,7 +43,8 @@ const ViewVehicles = ({}) => {
 
   return (
     <div className="viewVehicles">
-      <h2>View All Vehicles</h2>
+      {category ? <h2>View {category.name}</h2> : null}
+      
       <div className="searchbar">
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </div>

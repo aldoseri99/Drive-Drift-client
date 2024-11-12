@@ -1,11 +1,11 @@
-const CategoryCard = ({ name, image }) => {
+const CategoryCard = ({ category }) => {
   return (
     <div className="card vehicle-card">
       <div className="img-wrapper">
-        <img src={image.url} alt={`${name} `} />
+        <img src={category.image.url} alt={`${category.name} `} />
       </div>
       <div className="info-wrapper flex-col">
-        {name}
+        {category.name}
       </div>
     </div>
   )
