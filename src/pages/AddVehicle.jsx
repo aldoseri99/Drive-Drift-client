@@ -55,7 +55,7 @@ const AddVehicle = () => {
     try {
       const response = await setVehicle(formValues)
       console.log(response)
-      navigate("/viewVehicles")
+      navigate(`/viewVehicles/${response._id}`)
     } catch (error) {}
   }
 

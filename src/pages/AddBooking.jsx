@@ -2,8 +2,8 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { detailVehicle } from "../services/vehicleService"
-import { getInsurances } from "../services/InsuranceService"
 import { postBookings } from "../services/BookingServices"
+import { getInsurances } from "../services/insuranceService"
 
 const AddBooking = ({ user }) => {
   if (user) {
@@ -17,7 +17,7 @@ const AddBooking = ({ user }) => {
     const [endDateMin, setEndDateMin] = useState(
       new Date().toISOString().split("T")[0]
     )
-    const [emails, setEmails] = useState('')
+    const [emails, setEmails] = useState("")
 
     const initialState = {
       startDate: "",
@@ -30,7 +30,6 @@ const AddBooking = ({ user }) => {
     }
     const [formValues, setFormValues] = useState(initialState)
 
-    
     useEffect(() => {
       const getDetails = async () => {
         const v = await detailVehicle(vehicle_id)
@@ -115,12 +114,15 @@ const AddBooking = ({ user }) => {
     const handelSubmit = async (e) => {
       e.preventDefault()
       console.log("Booking submitting")
-      const autoEmailData={
-        emails
-      }  
+      const autoEmailData = {
+        emails,
+      }
       try {
         const response = await postBookings(formValues)
-        await axios.post(`http://localhost:3001/booking/autoEmail`, autoEmailData)
+        await axios.post(
+          `http://localhost:3001/booking/autoEmail`,
+          autoEmailData
+        )
         console.log(response)
         navigate("/viewVehicles")
       } catch (error) {}
@@ -184,11 +186,11 @@ const AddBooking = ({ user }) => {
               <div className="form-group">
                 <label htmlFor="emails">email:</label>
                 <input
-                type="email"
-                id="emails"
-                value={emails}
-                onChange={(e) => setEmails(e.target.value)}
-                required
+                  type="email"
+                  id="emails"
+                  value={emails}
+                  onChange={(e) => setEmails(e.target.value)}
+                  required
                 />
               </div>
               <button type="submit">Book</button>
