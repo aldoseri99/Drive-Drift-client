@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { SignInUser } from "../services/Auth"
+import "./CSS/SignIn.css"
 
 const SignIn = ({ user, setUser }) => {
   let navigate = useNavigate()
@@ -37,7 +38,7 @@ const SignIn = ({ user, setUser }) => {
   }
 
   return (
-    <div className="signin col">
+    <div className="signin-col">
       <div className="card-overlay1 centered">
         <form className="col" onSubmit={handleSubmit}>
           {errorMessage && <div className="error-message">{errorMessage}</div>}
