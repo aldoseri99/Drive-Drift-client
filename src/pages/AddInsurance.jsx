@@ -1,6 +1,6 @@
-import axios, { Axios } from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { getInsurances } from "../services/insuranceService"
 
 
 const AddInsurance = () => {
@@ -8,15 +8,15 @@ const AddInsurance = () => {
 
   const initialState = {
     insuranceType: "",
-    price: "",
+    price: null,
     termsAndConditions: "",
   }
 
   const [formValues, setFormValues] = useState(initialState)
-  const [insuranceType, setInsuranceType] = useState("")
-  const [price, setPrice] = useState("")
-  const [termsAndConditions, setTermsAndConditions] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState(null)
 
+  
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
     console.log(e.target.name, e.target.value)
@@ -31,9 +31,9 @@ const AddInsurance = () => {
     e.preventDefault()
     console.log("submitting")
     try {
-      const response = await axios.post(`http://localhost:3001/insurance/`, formValues)
+      const response = await getInsurances(formValues)
       console.log(response)
-      navigate("/viewInsurances")
+      navigate("/")
     } catch (error) {}
   }
 
@@ -42,14 +42,13 @@ const AddInsurance = () => {
       <form onSubmit={handleSubmit} action="">
         <div>
           <label className="form-label" htmlFor="">
-          insurance Type:
+            Insurance Type
           </label>
           <input
             className="form-control"
             onChange={handleChange}
             name="insuranceType"
             type="text"
-            value={formValues.insuranceType}
           />
         </div>
         <div>
@@ -61,19 +60,17 @@ const AddInsurance = () => {
             onChange={handleChange}
             name="price"
             type="text"
-            value={formValues.price}
           />
         </div>
         <div>
           <label className="form-label" htmlFor="">
-            terms And Conditions:
+            Terms And Conditions
           </label>
           <input
             className="form-control"
             onChange={handleChange}
             name="termsAndConditions"
             type="text"
-            value={formValues.termsAndConditions}
           />
         </div>
         <input type="submit" className="btn btn-success" />

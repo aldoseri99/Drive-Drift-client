@@ -13,12 +13,7 @@ const Home = ({ user }) => {
     .quality("auto")
     .resize(auto().gravity(autoGravity()).width(500).height(500)) // Transform the image: auto-crop to square aspect_ratio
 
-  return (
-    <div>
-      {user ? <h1>hello {user.name}</h1> : null}
-      <AdvancedImage cldImg={img} />
-    </div>
-  )
+  return <div>{user ? <h1>hello {user.name}</h1> : null}</div>
 }
 
 export default Home

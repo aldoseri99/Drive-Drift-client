@@ -1,6 +1,8 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { setVehicle } from "../services/vehicleService"
+import "./CSS/AddVehicle.css"
 
 const AddVehicle = () => {
   let navigate = useNavigate()
@@ -18,6 +20,7 @@ const AddVehicle = () => {
   const [imageBase64, setImageBase64] = useState("")
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState(null)
+  const [category, setCategory] = useState(null)
 
   // convert image file to base64
   const setFileToBase64 = (file) => {
@@ -56,8 +59,21 @@ const AddVehicle = () => {
     } catch (error) {}
   }
 
+  useEffect(() => {
+    try {
+      const getCategories = async () => {
+        const res = await axios.get("http://localhost:3001/category")
+        setCategory(res.data)
+        console.log(res.data)
+      }
+      getCategories()
+    } catch (err) {
+      console.log(err)
+    }
+  }, [])
+
   return (
-    <div className="form-container">
+    <div className="form-container-Add">
       <form onSubmit={handleSubmit} action="">
         <div>
           <label className="form-label" htmlFor="">
@@ -107,12 +123,14 @@ const AddVehicle = () => {
           <label className="form-label" htmlFor="">
             Category
           </label>
-          <input
-            className="form-control"
-            onChange={handleChange}
-            name="category"
-            type="text"
-          />
+          <select onChange={handleChange} name="category" id="">
+            <option value="" disable hidden>
+              -
+            </option>
+            {category?.map((cat) => (
+              <option value={cat._id}>{cat.name}</option>
+            ))}
+          </select>
         </div>
         <div>
           <label className="form-label" htmlFor="">

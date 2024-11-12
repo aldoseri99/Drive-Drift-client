@@ -1,0 +1,21 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  justify-content: center;
+}
+
+.btnNav {
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+  text-decoration: none;
+  padding: 10px;
+  margin-right: 50px;
+}
+
+.btnNav:hover {
+  color: #1c9eb2;
+}

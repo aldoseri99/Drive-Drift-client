@@ -8,6 +8,7 @@ export const postBookings = async (bookingData) => {
     throw error
   }
 }
+
 export const getBookings = async (bookingData) => {
   try {
     const res = await Client.get("/booking")
