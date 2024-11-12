@@ -5,7 +5,7 @@ const ReviewsCard = ({ vehicle }) => {
   const [reviews, setReviews] = useState()
   useEffect(() => {
     const getAllReviews = async () => {
-      const response = getReviews()
+      const response = await getReviews()
       const rev = response.filter((review) => {
         return review.vehicle === vehicle._id
       })
@@ -13,12 +13,14 @@ const ReviewsCard = ({ vehicle }) => {
       setReviews(rev)
     }
     getAllReviews()
-  }, [vehicle])
+  }, [])
   return (
-    <div>
+    <div className="reviews">
       {reviews?.map((review) => (
-        <div>
-          <h1>{review.rating}</h1>
+        <div className="review-card" key={review.user.id}>
+          <p className="rating">Rating: {review.rating}⭐</p>
+          <p className="review-text">{review.review}</p>
+          <p className="user-name">- {review.user.name}</p>
         </div>
       ))}
     </div>
