@@ -13,7 +13,9 @@ const ViewVehicles = ({}) => {
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/category/${categoryId}`)
+        const res = await axios.get(
+          `http://localhost:3001/category/${categoryId}`
+        )
         setCategory(res.data)
       } catch (err) {
         console.log('Error fetching categories:', err)
@@ -44,7 +46,7 @@ const ViewVehicles = ({}) => {
   return (
     <div className="viewVehicles">
       {category ? <h2>View {category.name}</h2> : null}
-      
+
       <div className="searchbar">
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </div>
@@ -67,3 +69,5 @@ const ViewVehicles = ({}) => {
 }
 
 export default ViewVehicles
+
+// test
