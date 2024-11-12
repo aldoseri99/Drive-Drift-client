@@ -1,9 +1,8 @@
 import Client from "./api"
 
-export const setInsurance = async (insuranceData) => {
+export const getInsurances = async () => {
   try {
-    console.log(insuranceData)
-    const res = await Client.post("/insurance", insuranceData)
+    const res = await Client.get("/insurance")
     return res.data
   } catch (error) {
     throw error
