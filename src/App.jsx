@@ -20,7 +20,7 @@ import AddInsurance from './pages/AddInsurance'
 import VehicleCategory from './components/VehicleCategory'
 import AddCategory from './pages/AddCategory'
 import AddBooking from "./pages/AddBooking"
-import AddInsurance from "./pages/AddInsuracne"
+
 
 const App = () => {
   const [user, setUser] = useState(null)

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { setInsurance } from "../services/insuranceService"
+import { getInsurances } from "../services/insuranceService"
 
 
 const AddInsurance = () => {
@@ -31,7 +31,7 @@ const AddInsurance = () => {
     e.preventDefault()
     console.log("submitting")
     try {
-      const response = await setInsurance(formValues)
+      const response = await getInsurances(formValues)
       console.log(response)
       navigate("/")
     } catch (error) {}
