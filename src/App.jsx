@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom"
 import axios from "axios"
 import { useState, useEffect } from "react"
 import ViewVehicles from "./components/ViewVehicles"
+import ViewInsurances from './components/ViewInsurances'
 import Home from "./components/Home"
 import Nav from "./components/Nav"
 import Footer from "./components/Footer"
@@ -16,6 +17,7 @@ import UserProfile from "./components/UserProfile"
 import SideBar from "./components/SideBar"
 import AddVehicle from "./pages/AddVehicle"
 import AddBooking from "./pages/AddBooking"
+import AddInsurance from "./pages/AddInsuracne"
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -99,7 +101,9 @@ const App = () => {
         <Routes>
           <Route path="/user" element={<SideBar user={user} />} />
           <Route path="/addvehicle" element={<AddVehicle />} />
+          <Route path="/addinsurance" element={<AddInsurance />} />
           <Route path="/viewvehicles" element={<ViewVehicles />} />
+          <Route path="/viewinsurance" element={<ViewInsurances />} />
           <Route
             path="/"
             element={
