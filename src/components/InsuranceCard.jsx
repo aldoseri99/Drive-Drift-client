@@ -1,16 +1,13 @@
-const InsuranceCard = ({ price,type,terms }) => {
+const InsuranceCard = ({ price, type, terms }) => {
   return (
     <div className="card insurance-card">
+      <div>Type: {type}</div>
       <div>
-        type:{type}
+        Terms and Conditions: <br />
+        {terms}
       </div>
-      <div>
-        Terms:{terms}
-      </div>
-      <div>
-        price: {price} BD
-      </div>
+      <div>Price: {price} BD</div>
     </div>
-  );
-};
-export default InsuranceCard;
+  )
+}
+export default InsuranceCard

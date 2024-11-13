@@ -1,10 +1,11 @@
+@import "react-big-calendar/lib/css/react-big-calendar.css";
 * {
   padding: 0;
   margin: 0;
 }
 
 body {
-  background-image: url('/Images/Background.jpg');
+  background-image: url("/Images/Background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -87,7 +88,8 @@ a {
 .searchbar {
   margin: 14px auto;
   width: 300px; /* Adjust width as needed */
-  border-radius: 4px;  border: 3px solid #1c9eb2 ;
+  border-radius: 4px;
+  border: 3px solid #1c9eb2;
   font-size: 14px;
   outline: none;
   display: block;
@@ -102,3 +104,6 @@ a {
   background-color: #1c9eb2;
 }
 
+.fa-star {
+  color: rgb(255, 217, 0);
+}

@@ -17,7 +17,6 @@ const Home = ({ user }) => {
 
   return (
     <>
-      {user ? <h1 className="welcome-message">Hello {user.name}</h1> : null}
       <div className="MainC">
         <div className="LogoDiv">
           <img src="./Images/Logo.png" alt="Logo" className="MainLogo" />

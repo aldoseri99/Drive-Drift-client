@@ -25,3 +25,11 @@
 .confirm-button:hover {
   background-color: #17a2b8;
 }
+.status-form {
+  display: flex;
+  align-items: center;
+}
+.confirm-change {
+  font-size: 15px;
+  margin: 10px;
+}

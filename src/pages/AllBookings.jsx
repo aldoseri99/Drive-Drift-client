@@ -26,6 +26,7 @@ const AllBookings = ({ user }) => {
             <th className="header-cell">#</th>
             <th className="header-cell"></th>
             <th className="header-cell">Vehicle</th>
+            <th className="header-cell">Email</th>
             <th className="header-cell">Start Date</th>
             <th className="header-cell">End Date</th>
             <th className="header-cell">Status</th>
@@ -46,13 +47,14 @@ const AllBookings = ({ user }) => {
                 <td className="table-cell">
                   {book.vehicle.brand}, {book.vehicle.model}
                 </td>
+                <td className="table-cell">{book.user.email}</td>
                 <td className="table-cell">
                   {new Date(book.startDate).toLocaleDateString()}
                 </td>
                 <td className="table-cell">
                   {new Date(book.endDate).toLocaleDateString()}
                 </td>
-                <td className="table-cell">
+                <td className="table-cell changers">
                   <StatusChanger booking={book} />
                 </td>
               </tr>

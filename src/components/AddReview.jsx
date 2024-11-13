@@ -53,7 +53,7 @@ const AddReview = ({ user, vehicle }) => {
       <>
         {canReview ? (
           <div>
-            <form onSubmit={handelRateSubmit}>
+            <form className="review-container" onSubmit={handelRateSubmit}>
               <div>
                 <label htmlFor="">Rate</label>
                 <div>
@@ -88,7 +88,7 @@ const AddReview = ({ user, vehicle }) => {
                   id=""
                 ></textarea>
               </div>
-              <button>Submit</button>
+              <button className="submit-btn">Submit</button>
             </form>
           </div>
         ) : null}

@@ -21,6 +21,7 @@ import Bookings from "./pages/Bookings"
 import AllBookings from "./pages/AllBookings"
 import VehicleUpdate from "./components/VehicleUpdate"
 import UserLists from "./pages/UserLists"
+import MyCalendar from "./pages/MyCalendar"
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -204,6 +205,7 @@ const App = () => {
             element={<AllBookings user={user} />}
           ></Route>
           <Route path="/userlist" element={<UserLists user={user} />}></Route>
+          <Route path="/calendar" element={<MyCalendar />}></Route>
         </Routes>
       </main>
     </div>

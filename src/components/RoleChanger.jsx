@@ -4,14 +4,16 @@ import "./CSS/RoleChanger.css"
 
 const RoleChanger = ({ user }) => {
   const [selected, setSelected] = useState(user.role)
+  const [selectedForm, setSelectedFrom] = useState(user.role)
   const handleChange = (e) => {
     console.log(e.target.value)
-    setSelected({ [e.target.name]: e.target.value })
+    setSelected(e.target.value)
+    setSelectedFrom({ [e.target.name]: e.target.value })
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await UpdateUser(user._id, selected)
+      await UpdateUser(user._id, selectedForm)
     } catch (error) {
       console.log(error)
     }
