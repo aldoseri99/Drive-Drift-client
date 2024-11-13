@@ -26,7 +26,7 @@ const VehicleCategory = ({ user }) => {
 
   return (
     <div className="vehiclecategory">
-      <h2>View Vehicle Category</h2>
+      <h2 className='viewCat'>View Vehicle Category</h2>
       {user && user.role ? (
         <>
           <Link className="btn btn-primary" to="/addcategory">
