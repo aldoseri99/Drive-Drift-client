@@ -32,38 +32,46 @@ const AllBookings = ({ user }) => {
           </tr>
         </thead>
         <tbody>
-          {bookings?.map((book, index) => (
-            <tr className="table-row" key={index}>
-              <td className="table-cell">{index + 1}</td>
-              <td className="table-cell">
-                <img
-                  className="table-image"
-                  src={book.vehicle.image.url}
-                  alt=""
-                />
-              </td>
-              <td className="table-cell">
-                {book.vehicle.brand}, {book.vehicle.model}
-              </td>
-              <td className="table-cell">
-                {new Date(book.startDate).toLocaleDateString()}
-              </td>
-              <td className="table-cell">
-                {new Date(book.endDate).toLocaleDateString()}
-              </td>
-              <td className="table-cell">
-                <form onSubmit={() => handleSubmit(book._id)}>
-                  <select>
-                    {stat.map((st) => (
-                      <option key={st} value={st}>
-                        {st}
-                      </option>
-                    ))}
-                  </select>
-                </form>
+          {bookings ? (
+            bookings?.map((book, index) => (
+              <tr className="table-row" key={index}>
+                <td className="table-cell">{index + 1}</td>
+                <td className="table-cell">
+                  <img
+                    className="table-image"
+                    src={book.vehicle.image.url}
+                    alt=""
+                  />
+                </td>
+                <td className="table-cell">
+                  {book.vehicle.brand}, {book.vehicle.model}
+                </td>
+                <td className="table-cell">
+                  {new Date(book.startDate).toLocaleDateString()}
+                </td>
+                <td className="table-cell">
+                  {new Date(book.endDate).toLocaleDateString()}
+                </td>
+                <td className="table-cell">
+                  <form onSubmit={() => handleSubmit(book._id)}>
+                    <select>
+                      {stat.map((st) => (
+                        <option key={st} value={st}>
+                          {st}
+                        </option>
+                      ))}
+                    </select>
+                  </form>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td className="No-Cell" colSpan={6}>
+                No Booking
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </>
