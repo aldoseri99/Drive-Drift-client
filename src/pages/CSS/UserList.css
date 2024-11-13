@@ -1,0 +1,24 @@
+/* Table styling */
+.user-table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f9f9f9; /* Light background */
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Table row and cell styling */
+.table-row:hover {
+  background-color: #e8f5e9; /* Highlight on hover */
+}
+
+.table-cell {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}

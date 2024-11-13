@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { SignInUser } from "../services/Auth"
+import { Link } from "react-router-dom"
 import "./CSS/SignIn.css"
 
 const SignIn = ({ user, setUser }) => {
@@ -64,6 +65,9 @@ const SignIn = ({ user, setUser }) => {
             />
           </div>
           <div>{errorMessage}</div>
+          <p>
+            Don’t have an account? Register <Link to="/register">here</Link>.
+          </p>
           <button
             className="submit"
             disabled={!formValues.email || !formValues.password}

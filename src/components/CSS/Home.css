@@ -32,34 +32,50 @@
 
 .NameDD h1 {
   color: white;
-  float: right;
-  padding-right: 15pc;
+  /* float: right; */
+  /* padding-right: 15pc; */
   font-size: 70px;
   animation: fadeIn 2.5s ease-in-out;
 }
 
 .NameDD p {
   color: white;
-  float: right;
-  padding-right: 11pc;
+  /* float: right; */
+  /* padding-right: 11pc; */
   animation: fadeIn 2.5s ease-in-out;
 }
 
 .LetStartButton {
   background-color: #1bb4cc;
   color: white;
-  padding: 15px 30px;
+  /* padding: 15px 30px; */
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
   font-size: 20px;
-  margin-left: 16pc;
-  margin-top: 20px;
+  /* margin-left: 16pc;
+  margin-top: 20px; */
+  width: 200px;
   padding: 10px 40px 10px 40px;
   transition: all 0.2s ease-in-out;
+  animation: fadeIn 2.5s ease-in-out;
 }
 
 .LetStartButton:hover {
   background-color: #268897;
+  color: white;
+}
+.NameDD {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-items: right;
+  width: 100%;
+  margin-left: 250px;
+}
+
+.welcome-message {
+  color: white;
+  margin: 20px 50px;
 }

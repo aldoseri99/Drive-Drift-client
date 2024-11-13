@@ -33,3 +33,30 @@ export const CheckSession = async () => {
     throw error
   }
 }
+
+export const GetUserInfo = async (userId) => {
+  try {
+    const res = await Client.get(`/auth/user/${userId}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+export const GetAllUsers = async (userId) => {
+  try {
+    const res = await Client.get(`/auth/users/${userId}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const UpdateUser = async (user_id, data) => {
+  try {
+    const res = await Client.put(`/auth/update/${user_id}`, data)
+
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}

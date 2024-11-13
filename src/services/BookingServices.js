@@ -17,3 +17,12 @@ export const getBookings = async (bookingData) => {
     throw error
   }
 }
+
+export const putBookings = async (id, bookingData) => {
+  try {
+    const res = await Client.put(`/booking/${id}`, bookingData)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}

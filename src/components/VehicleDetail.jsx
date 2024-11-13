@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import { detailVehicle, setVehicle } from '../services/vehicleService'
-import { Link } from 'react-router-dom'
-import AddReview from './AddReview'
-import ReviewsCard from './ReviewsCard'
-import axios from 'axios'
+import { useEffect, useState } from "react"
+import { useParams, useNavigate } from "react-router-dom"
+import { detailVehicle, setVehicle } from "../services/vehicleService"
+import { Link } from "react-router-dom"
+import AddReview from "./AddReview"
+import ReviewsCard from "./ReviewsCard"
+import axios from "axios"
 
 const VehicleDetail = ({ user }) => {
   let navigate = useNavigate()
@@ -19,14 +19,14 @@ const VehicleDetail = ({ user }) => {
   }, [])
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3001/vehicle/${vehicle_id}`);
-      alert('Post deleted successfully'); 
+      await axios.delete(`http://localhost:3001/vehicle/${vehicle_id}`)
+      alert("Post deleted successfully")
       navigate(`/ViewCategories`)
     } catch (error) {
-      console.error('Error deleting post:', error);
-      alert('Error deleting post');
+      console.error("Error deleting post:", error)
+      alert("Error deleting post")
     }
-  };
+  }
 
   return (
     <>
@@ -38,9 +38,11 @@ const VehicleDetail = ({ user }) => {
           <p>Model :{vehicle.model}</p>
           <p>Price Per Day: {vehicle.price} BD</p>
           <p>Color: {vehicle.color}</p>
-          <p>Category: {vehicle.category}</p>
-          <p>Description:
-            {vehicle.description}</p>
+          {/* <p>Category: {vehicle.category}</p> */}
+          <p>
+            Description:
+            {vehicle.description}
+          </p>
 
           {user ? (
             <div>
@@ -57,7 +59,6 @@ const VehicleDetail = ({ user }) => {
               <AddReview user={user} vehicle={vehicle} />
             </div>
           ) : null}
-
 
           <ReviewsCard vehicle={vehicle} />
         </div>

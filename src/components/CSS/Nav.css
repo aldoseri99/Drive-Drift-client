@@ -6,6 +6,10 @@
 nav {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   justify-content: center;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  height: 80px;
 }
 
 .btnNav {
@@ -18,4 +22,17 @@ nav {
 
 .btnNav:hover {
   color: #1c9eb2;
+}
+
+.welcome {
+  padding-top: 10px;
+  color: rgb(163, 163, 163);
+  margin-left: 150px;
+}
+.nav-img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  border: 2px solid #1c9eb2;
+  margin-left: 100px;
 }
