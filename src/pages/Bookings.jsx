@@ -8,7 +8,9 @@ const Bookings = ({ user }) => {
     const getList = async () => {
       const response = await getBookings()
       const userBooking = response.filter((book) => book.user._id === user.id)
-      setBookings(userBooking)
+      if (userBooking.length > 0) {
+        setBookings(userBooking)
+      }
     }
     getList()
   }, [user])
@@ -26,28 +28,36 @@ const Bookings = ({ user }) => {
           </tr>
         </thead>
         <tbody>
-          {bookings?.map((book, index) => (
-            <tr className="table-row" key={index}>
-              <td className="table-cell">{index + 1}</td>
-              <td className="table-cell">
-                <img
-                  className="table-image"
-                  src={book.vehicle.image.url}
-                  alt=""
-                />
+          {bookings ? (
+            bookings.map((book, index) => (
+              <tr className="table-row" key={index}>
+                <td className="table-cell">{index + 1}</td>
+                <td className="table-cell">
+                  <img
+                    className="table-image"
+                    src={book.vehicle.image.url}
+                    alt=""
+                  />
+                </td>
+                <td className="table-cell">
+                  {book.vehicle.brand}, {book.vehicle.model}
+                </td>
+                <td className="table-cell">
+                  {new Date(book.startDate).toLocaleDateString()}
+                </td>
+                <td className="table-cell">
+                  {new Date(book.endDate).toLocaleDateString()}
+                </td>
+                <td className="table-cell">{book.status}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td className="No-Cell" colSpan={6}>
+                No Booking
               </td>
-              <td className="table-cell">
-                {book.vehicle.brand}, {book.vehicle.model}
-              </td>
-              <td className="table-cell">
-                {new Date(book.startDate).toLocaleDateString()}
-              </td>
-              <td className="table-cell">
-                {new Date(book.endDate).toLocaleDateString()}
-              </td>
-              <td className="table-cell">{book.status}</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </>

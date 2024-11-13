@@ -136,7 +136,10 @@ const App = () => {
           />
           <Route path="/addinsurance" element={<AddInsurance />} />
           <Route path="/viewvehicles/:categoryId" element={<ViewVehicles />} />
-          <Route path="/viewinsurance" element={<ViewInsurances />} />
+          <Route
+            path="/viewinsurance"
+            element={<ViewInsurances user={user} />}
+          />
           <Route
             path="/"
             element={
