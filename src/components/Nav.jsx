@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import "./Nav.css"
 
-const Nav = ({ handleLogOut }) => {
+const Nav = ({ handleLogout }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="btn btn-dark" href="/">
@@ -41,7 +41,7 @@ const Nav = ({ handleLogOut }) => {
         className="btn btn-dark"
         to="/"
         onClick={() => {
-          handleLogOut()
+          handleLogout()
         }}
       >
         Logout

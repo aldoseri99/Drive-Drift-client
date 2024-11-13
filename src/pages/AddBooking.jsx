@@ -124,12 +124,13 @@ const AddBooking = ({ user }) => {
           autoEmailData
         )
         console.log(response)
-        navigate("/viewVehicles")
+        navigate("/bookings")
       } catch (error) {}
     }
 
     return (
       <div>
+        <h1>test</h1>
         {vehicle ? (
           <>
             <div>

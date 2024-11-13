@@ -24,14 +24,19 @@ const VehicleDetail = ({ user }) => {
           <img src={vehicle.image.url} alt="" />
           <p>{vehicle.brand}</p>
           <p>{vehicle.model}</p>
-          <p>{vehicle.price}</p>
+          <p>{vehicle.price}BD</p>
           <p>{vehicle.color}</p>
           <p>{vehicle.category}</p>
           <p>{vehicle.description}</p>
-          <Link className="btn btn-primary" to={`/booking/${vehicle._id}`}>
-            Book
-          </Link>
-          <AddReview user={user} vehicle={vehicle} />
+          {user ? (
+            <div>
+              <Link className="btn btn-primary" to={`/booking/${vehicle._id}`}>
+                Book
+              </Link>
+              <AddReview user={user} vehicle={vehicle} />
+            </div>
+          ) : null}
+
           <ReviewsCard vehicle={vehicle} />
         </div>
       ) : null}
