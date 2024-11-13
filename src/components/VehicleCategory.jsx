@@ -26,16 +26,16 @@ const VehicleCategory = ({ user }) => {
 
   return (
     <div className="vehiclecategory">
-      <h2 className='viewCat'>View Vehicle Category</h2>
+      <h2 className="viewCat">View Vehicle Category</h2>
       {user && user.role ? (
-        <>
+        <div className="category-btn">
           <Link className="btn btn-primary" to="/addcategory">
-            Add Category
+            <i class="fa-solid fa-plus"></i> Category
           </Link>
           <Link className="btn btn-primary" to="/addvehicle">
-            Add Vehicle
+            <i class="fa-solid fa-plus"></i> Vehicle
           </Link>
-        </>
+        </div>
       ) : null}
 
       <div className="searchbar">

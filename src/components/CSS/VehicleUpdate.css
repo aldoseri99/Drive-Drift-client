@@ -43,3 +43,6 @@
 .vehicle-form .btn:hover {
   background-color: #025aa5;
 }
+.update-select {
+  height: 50px;
+}

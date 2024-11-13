@@ -18,7 +18,9 @@ const ReviewsCard = ({ vehicle }) => {
     <div className="reviews">
       {reviews?.map((review) => (
         <div className="review-card" key={review.user.id}>
-          <p className="rating">Rating: {review.rating}⭐</p>
+          <p>
+            Rating: <span className="rating">{review.rating}⭐</span>
+          </p>
           <p className="review-text">{review.review}</p>
           <p className="user-name">- {review.user.name}</p>
         </div>

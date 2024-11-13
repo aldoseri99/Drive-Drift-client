@@ -12,6 +12,9 @@ const Nav = ({ handleLogout, user }) => {
       <a className="btnNav" href="/viewcategories">
         View All Categories
       </a>
+      <a className="btnNav" href="/calendar">
+        Calendar
+      </a>
       {user ? (
         <>
           <a href="/viewinsurance" className="btnNav">

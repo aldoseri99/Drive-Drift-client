@@ -17,14 +17,13 @@ const Home = ({ user }) => {
 
   return (
     <>
-      {user ? <h1 className="welcome-message">Hello {user.name}</h1> : null}
       <div className="MainC">
         <div className="LogoDiv">
           <img src="./Images/Logo.png" alt="Logo" className="MainLogo" />
         </div>
         <div className="NameDD">
           <div>
-            <h1>Drive & Drift</h1>
+            <h1 className="Title">Drive & Drift</h1>
             <p>
               At DriftNDrive, we turn ordinary br journeys into extraordinary{" "}
               <br />

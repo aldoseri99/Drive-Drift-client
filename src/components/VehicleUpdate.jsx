@@ -1,32 +1,38 @@
-import { useState, useEffect } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
-import axios from 'axios'
-import './CSS/VehicleUpdate.css' // Reusing the CSS file from VehicleDetail
+import { useState, useEffect } from "react"
+import { useParams, useNavigate, Link } from "react-router-dom"
+import axios from "axios"
+import "./CSS/VehicleUpdate.css" // Reusing the CSS file from VehicleDetail
+import { postCategory } from "../services/categoryService"
 
 const VehicleUpdate = () => {
   let navigate = useNavigate()
   const { vehicle_id } = useParams()
 
   // Initialize state for the form fields
-  const [brand, setBrand] = useState('')
-  const [model, setModel] = useState('')
-  const [color, setColor] = useState('')
-  const [category, setCategory] = useState('')
-  const [price, setPrice] = useState('')
-  const [description, setDescription] = useState('')
+  const [brand, setBrand] = useState("")
+  const [model, setModel] = useState("")
+  const [color, setColor] = useState("")
+  const [category, setCategory] = useState("")
+  const [price, setPrice] = useState("")
+  const [description, setDescription] = useState("")
+  const [catList, setCatList] = useState("")
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/vehicle/${vehicle_id}`)
+        const response = await axios.get(
+          `http://localhost:3001/vehicle/${vehicle_id}`
+        )
+        const res = await postCategory()
         setBrand(response.data.brand)
         setModel(response.data.model)
         setColor(response.data.color)
-        setCategory(response.data.category)
+        setCategory(response.data.category._id)
         setPrice(response.data.price)
         setDescription(response.data.description)
+        setCatList(res)
       } catch (error) {
-        console.error('Error fetching post data:', error)
+        console.error("Error fetching post data:", error)
       }
     }
     fetchPost()
@@ -38,11 +44,14 @@ const VehicleUpdate = () => {
     const updatedPost = { brand, model, description, color, category, price }
 
     try {
-      const response = await axios.put(`http://localhost:3001/vehicle/${vehicle_id}`, updatedPost)
-      console.log('Post updated:', response.data)
+      const response = await axios.put(
+        `http://localhost:3001/vehicle/${vehicle_id}`,
+        updatedPost
+      )
+      console.log("Post updated:", response.data)
       navigate(`/vehicles/${vehicle_id}`)
     } catch (error) {
-      console.error('Error updating post:', error)
+      console.error("Error updating post:", error)
     }
   }
 
@@ -87,12 +96,19 @@ const VehicleUpdate = () => {
         </div>
         <div className="form-group">
           <label>Category</label>
-          <input
-            type="text"
-            value={category}
+          <select
             onChange={(e) => setCategory(e.target.value)}
-            required
-          />
+            name=""
+            id=""
+            value={category}
+            className="update-select"
+          >
+            {catList
+              ? catList.map((list) => (
+                  <option value={list._id}>{list.name}</option>
+                ))
+              : null}
+          </select>
         </div>
         <div className="form-group">
           <label>Price Per Day (BD)</label>
@@ -103,7 +119,9 @@ const VehicleUpdate = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">Update Vehicle</button>
+        <button type="submit" className="btn btn-primary">
+          Update Vehicle
+        </button>
       </form>
     </div>
   )

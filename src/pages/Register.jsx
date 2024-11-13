@@ -18,7 +18,6 @@ const Register = () => {
   const [image, setImage] = useState(null)
   const [imageBase64, setImageBase64] = useState("")
 
-  // convert image file to base64
   const setFileToBase64 = (file) => {
     const reader = new FileReader()
     reader.readAsDataURL(file)
@@ -28,7 +27,6 @@ const Register = () => {
     }
   }
 
-  // receive file from form
   const handleImage = (e) => {
     const file = e.target.files[0]
     setImage(file)

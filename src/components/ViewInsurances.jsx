@@ -3,6 +3,7 @@ import axios from "axios"
 import InsuranceCard from "./InsuranceCard"
 import Search from "./Search"
 import { Link } from "react-router-dom"
+import "./CSS/InsuranceCard.css"
 
 const ViewInsurances = ({ user }) => {
   const [insurances, setInsurances] = useState([])
@@ -31,7 +32,7 @@ const ViewInsurances = ({ user }) => {
         </>
       ) : null}
 
-      <section className="container-grid">
+      <section className="insurance-grid">
         {insurances.map((insurance) => (
           <InsuranceCard
             type={insurance.insuranceType}
