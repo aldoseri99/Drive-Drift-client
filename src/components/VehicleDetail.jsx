@@ -24,7 +24,7 @@ const VehicleDetail = ({ user }) => {
           <img src={vehicle.image.url} alt="" />
           <p>{vehicle.brand}</p>
           <p>{vehicle.model}</p>
-          <p>{vehicle.price}</p>
+          <p>{vehicle.price}BD</p>
           <p>{vehicle.color}</p>
           <p>{vehicle.category}</p>
           <p>{vehicle.description}</p>
