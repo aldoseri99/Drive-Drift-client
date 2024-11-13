@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
-import { detailVehicle } from '../services/vehicleService'
-import AddReview from './AddReview'
-import ReviewsCard from './ReviewsCard'
-import axios from 'axios'
+import { useEffect, useState } from "react"
+import { useParams, useNavigate } from "react-router-dom"
+import { detailVehicle, setVehicle } from "../services/vehicleService"
+import { Link } from "react-router-dom"
+import AddReview from "./AddReview"
+import ReviewsCard from "./ReviewsCard"
+import axios from "axios"
 import './CSS/VehicleDetail.css'
+
 
 const VehicleDetail = ({ user }) => {
   let navigate = useNavigate()
@@ -22,6 +24,7 @@ const VehicleDetail = ({ user }) => {
   const handleDelete = async () => {
     try {
       await axios.delete(`http://localhost:3001/vehicle/${vehicle_id}`)
+
       alert('Post deleted successfully')
       navigate(`/ViewCategories`)
     } catch (error) {
@@ -80,7 +83,7 @@ const VehicleDetail = ({ user }) => {
               </Link>
               <AddReview user={user} vehicle={vehicle} />
             </div>
-          )}
+          ) : null}
           <ReviewsCard vehicle={vehicle} />
         </div>
       ) : null}

@@ -1,0 +1,27 @@
+/* Form and select styling */
+.role-form {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between select and button */
+}
+
+.role-select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+}
+
+.confirm-button {
+  padding: 5px 10px;
+  background-color: #1c9eb2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.confirm-button:hover {
+  background-color: #17a2b8;
+}

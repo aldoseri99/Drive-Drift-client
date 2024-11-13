@@ -55,7 +55,6 @@ const AddBooking = ({ user }) => {
       setSelectedInsurance(insurance || null)
       setInsPrice(insurance ? insurance.price : 0)
 
-      // Calculate total price if dates are already selected
       if (formValues.startDate && formValues.endDate) {
         const startDate = new Date(formValues.startDate)
         const endDate = new Date(formValues.endDate)
@@ -76,7 +75,6 @@ const AddBooking = ({ user }) => {
     }
 
     const handleChange = (e) => {
-      // Update form values with the new input
       const updatedFormValues = {
         ...formValues,
         [e.target.name]: e.target.value
@@ -90,7 +88,6 @@ const AddBooking = ({ user }) => {
         setEndDateMin(e.target.value)
       }
 
-      // Calculate days difference if both dates are available
       if (updatedFormValues.startDate && updatedFormValues.endDate) {
         const startDate = new Date(updatedFormValues.startDate)
         const endDate = new Date(updatedFormValues.endDate)
@@ -100,7 +97,6 @@ const AddBooking = ({ user }) => {
 
         setDateDifferent(daysDifference)
 
-        // Calculate total price with both vehicle price and insurance price
         const totalPrice = daysDifference * vehicle.price + (insPrice || 0)
         setTotalPrice(totalPrice)
         console.log('Total price:', totalPrice)

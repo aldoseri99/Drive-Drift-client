@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getBookings } from "../services/BookingServices"
 import "./CSS/Booking.css"
+import StatusChanger from "../components/StatusChanger"
 
 const AllBookings = ({ user }) => {
   const [selected, setSelected] = useState()
@@ -12,7 +13,6 @@ const AllBookings = ({ user }) => {
     }
     getList()
   }, [user])
-  const stat = ["Pending", "Confirmed", "Rejected", "Completed"]
   const handleSubmit = (e) => {
     e.preventDefault()
     try {
@@ -53,15 +53,7 @@ const AllBookings = ({ user }) => {
                   {new Date(book.endDate).toLocaleDateString()}
                 </td>
                 <td className="table-cell">
-                  <form onSubmit={() => handleSubmit(book._id)}>
-                    <select>
-                      {stat.map((st) => (
-                        <option key={st} value={st}>
-                          {st}
-                        </option>
-                      ))}
-                    </select>
-                  </form>
+                  <StatusChanger booking={book} />
                 </td>
               </tr>
             ))
