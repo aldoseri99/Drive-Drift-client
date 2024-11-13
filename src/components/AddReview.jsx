@@ -88,7 +88,7 @@ const AddReview = ({ user, vehicle }) => {
                   id=""
                 ></textarea>
               </div>
-              <button className="submit-btn">Submit</button>
+              <button className="btn btn-primary review-btn">Submit</button>
             </form>
           </div>
         ) : null}

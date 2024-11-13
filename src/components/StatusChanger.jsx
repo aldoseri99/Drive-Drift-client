@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { putBookings } from "../services/BookingServices"
+import axios from "axios"
 
 const StatusChanger = ({ booking }) => {
   const [selected, setSelected] = useState(booking.status)
@@ -13,8 +14,18 @@ const StatusChanger = ({ booking }) => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const autoEmailData = {
+      name: booking.user.name,
+      emails: booking.user.email,
+      status: selected,
+    }
+
     try {
       const res = await putBookings(booking._id, selectedFrom)
+      await axios.post(
+        `http://localhost:3001/booking/statusEmail`,
+        autoEmailData
+      )
       if (res) {
         setConfirmed(true)
       }

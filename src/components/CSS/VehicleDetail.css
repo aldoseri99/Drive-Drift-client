@@ -49,6 +49,7 @@
 
 .btn-primary {
   background-color: #0275d8;
+  width: 90px;
 }
 
 .review-container {
@@ -105,4 +106,8 @@
   color: #666;
   text-align: right;
   font-style: italic;
+}
+.review-btn {
+  margin: 0;
+  align-self: end;
 }

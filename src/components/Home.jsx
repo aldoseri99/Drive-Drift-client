@@ -23,7 +23,7 @@ const Home = ({ user }) => {
         </div>
         <div className="NameDD">
           <div>
-            <h1>Drive & Drift</h1>
+            <h1 className="Title">Drive & Drift</h1>
             <p>
               At DriftNDrive, we turn ordinary br journeys into extraordinary{" "}
               <br />

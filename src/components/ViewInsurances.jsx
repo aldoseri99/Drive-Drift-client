@@ -32,7 +32,7 @@ const ViewInsurances = ({ user }) => {
         </>
       ) : null}
 
-      <section className="container-grid">
+      <section className="insurance-grid">
         {insurances.map((insurance) => (
           <InsuranceCard
             type={insurance.insuranceType}

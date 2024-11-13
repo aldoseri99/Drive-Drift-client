@@ -1,7 +1,17 @@
 @import "react-big-calendar/lib/css/react-big-calendar.css";
+@font-face {
+  font-family: "MyCustomFont";
+  src: url("../public/font/Route159-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   padding: 0;
   margin: 0;
+}
+
+.Title {
+  font-family: "Route159-Regular", sans-serif;
 }
 
 body {
@@ -106,4 +116,9 @@ a {
 
 .fa-star {
   color: rgb(255, 217, 0);
+}
+.category-btn {
+  margin-right: 50px;
+  display: flex;
+  justify-content: end;
 }
