@@ -1,0 +1,35 @@
+.MainC {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.LogoDiv {
+  padding-top: 4%;
+  padding-left: 100px;
+}
+
+.MainLogo {
+  height: 20pc;
+  border-radius: 50%;
+  border: 6px solid #1c9eb2;
+  animation: fadeIn 2.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.NameDD h1 {
+  color: white;
+  float: right;
+  padding-right: 15pc;
+  font-size: 70px;
+}
