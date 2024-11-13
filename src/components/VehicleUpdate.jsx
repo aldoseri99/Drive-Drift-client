@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
-import { useParams, useNavigate } from 'react-router-dom'
+import './CSS/VehicleUpdate.css' // Reusing the CSS file from VehicleDetail
 
 const VehicleUpdate = () => {
   let navigate = useNavigate()
@@ -16,12 +16,9 @@ const VehicleUpdate = () => {
   const [description, setDescription] = useState('')
 
   useEffect(() => {
-    // Fetch the post data when the component mounts
     const fetchPost = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3001/vehicle/${vehicle_id}`
-        )
+        const response = await axios.get(`http://localhost:3001/vehicle/${vehicle_id}`)
         setBrand(response.data.brand)
         setModel(response.data.model)
         setColor(response.data.color)
@@ -32,7 +29,6 @@ const VehicleUpdate = () => {
         console.error('Error fetching post data:', error)
       }
     }
-
     fetchPost()
   }, [vehicle_id])
 
@@ -42,10 +38,7 @@ const VehicleUpdate = () => {
     const updatedPost = { brand, model, description, color, category, price }
 
     try {
-      const response = await axios.put(
-        `http://localhost:3001/vehicle/${vehicle_id}`,
-        updatedPost
-      )
+      const response = await axios.put(`http://localhost:3001/vehicle/${vehicle_id}`, updatedPost)
       console.log('Post updated:', response.data)
       navigate(`/vehicles/${vehicle_id}`)
     } catch (error) {
@@ -54,10 +47,10 @@ const VehicleUpdate = () => {
   }
 
   return (
-    <div>
-      <h2>Update Post</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="vehicle-detail-container">
+      <h2 className="vehicle-title">Update Vehicle Details</h2>
+      <form onSubmit={handleSubmit} className="vehicle-form">
+        <div className="form-group">
           <label>Brand</label>
           <input
             type="text"
@@ -66,40 +59,51 @@ const VehicleUpdate = () => {
             required
           />
         </div>
-        <div>
-          <label>Model:</label>
-          <textarea
+        <div className="form-group">
+          <label>Model</label>
+          <input
+            type="text"
             value={model}
             onChange={(e) => setModel(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Description:</label>
+        <div className="form-group">
+          <label>Description</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Color:</label>
-          <textarea
+        <div className="form-group">
+          <label>Color</label>
+          <input
+            type="text"
             value={color}
             onChange={(e) => setColor(e.target.value)}
             required
           />
         </div>
-
-        <div>
-          <label>Price:</label>
-          <textarea
+        <div className="form-group">
+          <label>Category</label>
+          <input
+            type="text"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Price Per Day (BD)</label>
+          <input
+            type="number"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
           />
         </div>
-        <button type="submit">Update Post</button>
+        <button type="submit" className="btn btn-primary">Update Vehicle</button>
       </form>
     </div>
   )

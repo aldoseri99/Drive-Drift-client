@@ -1,9 +1,10 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { detailVehicle } from "../services/vehicleService"
-import { postBookings } from "../services/BookingServices"
-import { getInsurances } from "../services/insuranceService"
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { detailVehicle } from '../services/vehicleService'
+import { postBookings } from '../services/BookingServices'
+import { getInsurances } from '../services/insuranceService'
+import "./CSS/VehicleBooking.css"
 
 const AddBooking = ({ user }) => {
   if (user) {
@@ -15,18 +16,18 @@ const AddBooking = ({ user }) => {
     const [dateDifferent, setDateDifferent] = useState()
     const [totalPrice, setTotalPrice] = useState(0)
     const [endDateMin, setEndDateMin] = useState(
-      new Date().toISOString().split("T")[0]
+      new Date().toISOString().split('T')[0]
     )
-    const [emails, setEmails] = useState("")
+    const [emails, setEmails] = useState('')
 
     const initialState = {
-      startDate: "",
-      endDate: "",
+      startDate: '',
+      endDate: '',
       totalPrice: 0,
-      status: "Pending",
-      insuranceId: "",
+      status: 'Pending',
+      insuranceId: '',
       user: user.id,
-      vehicle: vehicle_id,
+      vehicle: vehicle_id
     }
     const [formValues, setFormValues] = useState(initialState)
 
@@ -66,8 +67,8 @@ const AddBooking = ({ user }) => {
         setTotalPrice(totalPrice)
         const updatedFormValues = {
           ...formValues,
-          ["totalPrice"]: totalPrice,
-          [e.target.name]: e.target.value,
+          ['totalPrice']: totalPrice,
+          [e.target.name]: e.target.value
         }
         setFormValues(updatedFormValues)
       }
@@ -76,14 +77,14 @@ const AddBooking = ({ user }) => {
     const handleChange = (e) => {
       const updatedFormValues = {
         ...formValues,
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.value
       }
       setFormValues(updatedFormValues)
 
       console.log(e.target.name, e.target.value)
-      console.log("Updated formValues:", updatedFormValues)
+      console.log('Updated formValues:', updatedFormValues)
 
-      if (e.target.name === "startDate") {
+      if (e.target.name === 'startDate') {
         setEndDateMin(e.target.value)
       }
 
@@ -98,20 +99,20 @@ const AddBooking = ({ user }) => {
 
         const totalPrice = daysDifference * vehicle.price + (insPrice || 0)
         setTotalPrice(totalPrice)
-        console.log("Total price:", totalPrice)
+        console.log('Total price:', totalPrice)
 
         setFormValues((prevFormValues) => ({
           ...prevFormValues,
-          totalPrice: totalPrice,
+          totalPrice: totalPrice
         }))
       }
     }
 
     const handelSubmit = async (e) => {
       e.preventDefault()
-      console.log("Booking submitting")
+      console.log('Booking submitting')
       const autoEmailData = {
-        emails,
+        emails
       }
       try {
         const response = await postBookings(formValues)
@@ -120,33 +121,41 @@ const AddBooking = ({ user }) => {
           autoEmailData
         )
         console.log(response)
-        navigate("/bookings")
+        navigate('/bookings')
       } catch (error) {}
     }
 
     return (
-      <div>
-        <h1>test</h1>
+      <div className="booking-container">
+        <h1>Book Vehicle</h1>
         {vehicle ? (
           <>
-            <div>
-              <img src={vehicle.image.url} alt="" />
-              <p>{vehicle.brand}</p>
-              <p>{vehicle.model}</p>
-              <p>{vehicle.price}</p>
+            <div className="vehicle-details">
+              <img
+                src={vehicle.image.url}
+                alt={`${vehicle.brand} ${vehicle.model}`}
+              />
+              <div>
+                <p>Brand: {vehicle.brand}</p>
+                <p>Model: {vehicle.model}</p>
+                <p>Price per day: {vehicle.price} BD</p>
+              </div>
             </div>
-            <form onSubmit={handelSubmit}>
+
+            <form className="booking-form" onSubmit={handelSubmit}>
               <div>
                 <label htmlFor="start-date">Start Date</label>
                 <input
                   type="date"
                   id="start-date"
                   name="startDate"
-                  min={new Date().toISOString().split("T")[0]}
+                  min={new Date().toISOString().split('T')[0]}
                   required
                   onChange={handleChange}
                 />
+              </div>
 
+              <div>
                 <label htmlFor="end-date">End Date</label>
                 <input
                   type="date"
@@ -158,21 +167,25 @@ const AddBooking = ({ user }) => {
                   disabled={!formValues.startDate}
                 />
               </div>
-              <select
-                onChange={handleSelectChange}
-                defaultValue=""
-                name="insuranceId"
-                required
-              >
-                <option value="" disabled hidden>
-                  -
-                </option>
-                {insurances?.map((insurance) => (
-                  <option key={insurance._id} value={insurance._id}>
-                    {insurance.insuranceType}
+
+              <div>
+                <label htmlFor="insuranceId">Insurance</label>
+                <select
+                  onChange={handleSelectChange}
+                  defaultValue=""
+                  name="insuranceId"
+                  required
+                >
+                  <option value="" disabled hidden>
+                    Select insurance
                   </option>
-                ))}
-              </select>
+                  {insurances?.map((insurance) => (
+                    <option key={insurance._id} value={insurance._id}>
+                      {insurance.insuranceType}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
               {selectedInsurance && (
                 <div className="terms-and-conditions">
@@ -180,8 +193,9 @@ const AddBooking = ({ user }) => {
                   <p>{selectedInsurance.termsAndConditions}</p>
                 </div>
               )}
-              <div className="form-group">
-                <label htmlFor="emails">email:</label>
+
+              <div>
+                <label htmlFor="emails">Email</label>
                 <input
                   type="email"
                   id="emails"
@@ -190,11 +204,13 @@ const AddBooking = ({ user }) => {
                   required
                 />
               </div>
+
               <button type="submit">Book</button>
             </form>
           </>
         ) : null}
-        <h3>Total: {totalPrice}</h3>
+
+        <h3 className="total-price">Total: ${totalPrice}</h3>
       </div>
     )
   }
