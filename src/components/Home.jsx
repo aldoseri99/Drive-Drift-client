@@ -22,7 +22,17 @@ const Home = ({ user }) => {
       </div>
       <div className="NameDD">
         <h1>Drive & Drift</h1>
-        <p>Discription</p>
+        <p>
+          At DriftNDrive, we turn ordinary br journeys into extraordinary <br />
+          adventures. From luxury sports cars and SUVs to aircraft and boats,{" "}
+          <br />
+          our premium fleet covers every terrain. With expert staff and 24/7{" "}
+          <br />
+          support, we're your trusted partner in experiencing the vehicle of{" "}
+          <br />
+          your dreams. Your adventure starts here.
+        </p>
+        <button className="LetStartButton">Let's Start 🡢</button>
       </div>
     </div>
   )
