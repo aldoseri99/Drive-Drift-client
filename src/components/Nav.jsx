@@ -1,44 +1,44 @@
 import { Link } from "react-router-dom"
 import "./Nav.css"
 
-const Nav = ({ handleLogout }) => {
+const Nav = ({ handleLogout, user }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="btn btn-dark" href="/">
+    <nav className="nav">
+      <a className="btnNav" href="/">
         Home
       </a>
-      <a className="btn btn-dark" href="/addvehicle">
+      <a className="btnNav" href="/addvehicle">
         Add Vehicle
       </a>
-      <a className="btn btn-dark" href="/addinsurance">
+      <a className="btnNav" href="/addinsurance">
         Add Insurance
       </a>
 
-      <a className="btn btn-dark" href="/addcategory">
+      <a className="btnNav" href="/addcategory">
         Add Category
       </a>
 
-      <a className="btn btn-dark" href="/viewcategories">
+      <a className="btnNav" href="/viewcategories">
         View All Categories
       </a>
 
-      <a className="btn btn-dark" href="/viewvehicles">
+      <a className="btnNav" href="/viewvehicles">
         View All Vehicles
       </a>
-      <a href="/viewinsurance" className="btn btn-dark">
+      <a href="/viewinsurance" className="btnNav">
         insurance types
       </a>
-      <a className="btn btn-dark" href="/addinsurance">
+      <a className="btnNav" href="/addinsurance">
         Add Insurance
       </a>
-      <a className="btn btn-dark" href="/register">
+      <a className="btnNav" href="/register">
         Register
       </a>
-      <a className="btn btn-dark" href="/signIn">
+      <a className="btnNav" href="/signIn">
         SignIn
       </a>
       <Link
-        className="btn btn-dark"
+        className="btnNav"
         to="/"
         onClick={() => {
           handleLogout()
