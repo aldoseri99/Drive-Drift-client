@@ -2,6 +2,7 @@ import { Cloudinary } from "@cloudinary/url-gen"
 import { auto } from "@cloudinary/url-gen/actions/resize"
 import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity"
 import { AdvancedImage } from "@cloudinary/react"
+import "./CSS/Home.css"
 
 const Home = ({ user }) => {
   const cld = new Cloudinary({ cloud: { cloudName: "drd89nnxf" } })
@@ -13,7 +14,28 @@ const Home = ({ user }) => {
     .quality("auto")
     .resize(auto().gravity(autoGravity()).width(500).height(500)) // Transform the image: auto-crop to square aspect_ratio
 
-  return <div>{user ? <h1>hello {user.name}</h1> : null}</div>
+  return (
+    <div className="MainC">
+      {user ? <h1>hello {user.name}</h1> : null}
+      <div className="LogoDiv">
+        <img src="./Images/Logo.png" alt="Logo" className="MainLogo" />
+      </div>
+      <div className="NameDD">
+        <h1>Drive & Drift</h1>
+        <p>
+          At DriftNDrive, we turn ordinary br journeys into extraordinary <br />
+          adventures. From luxury sports cars and SUVs to aircraft and boats,{" "}
+          <br />
+          our premium fleet covers every terrain. With expert staff and 24/7{" "}
+          <br />
+          support, we're your trusted partner in experiencing the vehicle of{" "}
+          <br />
+          your dreams. Your adventure starts here.
+        </p>
+        <button className="LetStartButton">Let's Start 🡢</button>
+      </div>
+    </div>
+  )
 }
 
 export default Home

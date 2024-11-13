@@ -6,9 +6,6 @@ import ViewVehicles from './components/ViewVehicles'
 import ViewInsurances from './components/ViewInsurances'
 import Home from './components/Home'
 import Nav from './components/Nav'
-import Footer from './components/Footer'
-import Profile from './components/Profile'
-import Reviews from './components/Reviews'
 import VehicleDetail from './components/VehicleDetail'
 import SignIn from './pages/SignIn'
 import Register from './pages/Register'
@@ -19,8 +16,10 @@ import AddVehicle from './pages/AddVehicle'
 import AddInsurance from './pages/AddInsurance'
 import VehicleCategory from './components/VehicleCategory'
 import AddCategory from './pages/AddCategory'
-import AddBooking from "./pages/AddBooking"
-
+import AddBooking from './pages/AddBooking'
+import Bookings from './pages/Bookings'
+import AllBookings from './pages/AllBookings'
+import VehicleUpdate from './components/VehicleUpdate'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -33,8 +32,10 @@ const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   const handleLogout = () => {
+    console.log('logout')
+
     setUser(null)
-    localStorage.clear()
+    localStorage.removeItem('token')
   }
 
   const getBookings = async () => {
@@ -168,6 +169,10 @@ const App = () => {
             element={<VehicleDetail user={user} />}
           />
           <Route
+            path="/VehicleUpdate/:vehicle_id"
+            element={<VehicleUpdate user={user} />}
+          />
+          <Route
             path="/user/me"
             element={
               <UserProfile
@@ -188,6 +193,11 @@ const App = () => {
           <Route
             path="/booking/:vehicle_id"
             element={<AddBooking user={user} />}
+          ></Route>
+          <Route path="/bookings" element={<Bookings user={user} />}></Route>
+          <Route
+            path="/allbookings"
+            element={<AllBookings user={user} />}
           ></Route>
         </Routes>
       </main>
