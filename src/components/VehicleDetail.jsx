@@ -22,12 +22,13 @@ const VehicleDetail = ({ user }) => {
         <div>
           <h2>Vehicle Detail for ID: {vehicle._id}</h2>
           <img src={vehicle.image.url} alt="" />
-          <p>{vehicle.brand}</p>
-          <p>{vehicle.model}</p>
-          <p>{vehicle.price}</p>
-          <p>{vehicle.color}</p>
-          <p>{vehicle.category}</p>
-          <p>{vehicle.description}</p>
+          <p>Name: {vehicle.brand}</p>
+          <p>Model :{vehicle.model}</p>
+          <p>Price Per Day: {vehicle.price} BD</p>
+          <p>Color: {vehicle.color}</p>
+          <p>Category: {vehicle.category}</p>
+          <p>Description:
+            {vehicle.description}</p>
           <Link className="btn btn-primary" to={`/booking/${vehicle._id}`}>
             Book
           </Link>
