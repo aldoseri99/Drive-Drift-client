@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import "./CSS/Nav.css"
 
-const Nav = ({ handleLogout }) => {
+const Nav = ({ handleLogout, user }) => {
   return (
     <nav className="nav">
       <a className="btnNav" href="/">
