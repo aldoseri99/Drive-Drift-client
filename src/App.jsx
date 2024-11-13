@@ -1,30 +1,28 @@
-import './App.css'
-import { Route, Routes } from 'react-router-dom'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-import ViewVehicles from './components/ViewVehicles'
-import ViewInsurances from './components/ViewInsurances'
-import Home from './components/Home'
-import Nav from './components/Nav'
-import Footer from './components/Footer'
-import Profile from './components/Profile'
-import Reviews from './components/Reviews'
-import VehicleDetail from './components/VehicleDetail'
-import SignIn from './pages/SignIn'
-import Register from './pages/Register'
-import { CheckSession } from './services/Auth'
-import UserProfile from './components/UserProfile'
-import SideBar from './components/SideBar'
-import AddVehicle from './pages/AddVehicle'
-import AddInsurance from './pages/AddInsurance'
-import VehicleCategory from './components/VehicleCategory'
-import AddCategory from './pages/AddCategory'
+import "./App.css"
+import { Route, Routes } from "react-router-dom"
+import axios from "axios"
+import { useState, useEffect } from "react"
+import ViewVehicles from "./components/ViewVehicles"
+import ViewInsurances from "./components/ViewInsurances"
+import Home from "./components/Home"
+import Nav from "./components/Nav"
+import VehicleDetail from "./components/VehicleDetail"
+import SignIn from "./pages/SignIn"
+import Register from "./pages/Register"
+import { CheckSession } from "./services/Auth"
+import UserProfile from "./components/UserProfile"
+import SideBar from "./components/SideBar"
+import AddVehicle from "./pages/AddVehicle"
+import AddInsurance from "./pages/AddInsurance"
+import VehicleCategory from "./components/VehicleCategory"
+import AddCategory from "./pages/AddCategory"
 import AddBooking from "./pages/AddBooking"
-
+import Bookings from "./pages/Bookings"
+import AllBookings from "./pages/AllBookings"
 
 const App = () => {
   const [user, setUser] = useState(null)
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = useState("")
   const [bookings, setBookings] = useState([])
   const [reviews, setReviews] = useState([])
   const [vehicles, setVehicles] = useState([])
@@ -33,14 +31,16 @@ const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   const handleLogout = () => {
+    console.log("logout")
+
     setUser(null)
-    localStorage.clear()
+    localStorage.removeItem("token")
   }
 
   const getBookings = async () => {
     try {
-      let res = await axios.get('http://localhost:3001/booking')
-      console.log('Fetched bookings:', res.data)
+      let res = await axios.get("http://localhost:3001/booking")
+      console.log("Fetched bookings:", res.data)
       console.log(res.data)
       setBookings(res.data)
     } catch (err) {
@@ -50,8 +50,8 @@ const App = () => {
 
   const getReviews = async () => {
     try {
-      let res = await axios.get('http://localhost:3001/review')
-      console.log('Fetched reviews:', res.data)
+      let res = await axios.get("http://localhost:3001/review")
+      console.log("Fetched reviews:", res.data)
       console.log(res.data)
       setReviews(res.data)
     } catch (err) {
@@ -61,8 +61,8 @@ const App = () => {
 
   const getVehicles = async () => {
     try {
-      let res = await axios.get('http://localhost:3001/vehicle')
-      console.log('Fetched Vehicles:', res.data)
+      let res = await axios.get("http://localhost:3001/vehicle")
+      console.log("Fetched Vehicles:", res.data)
       console.log(res.data)
       setVehicles(res.data)
     } catch (err) {
@@ -72,8 +72,8 @@ const App = () => {
 
   const getCategories = async () => {
     try {
-      let res = await axios.get('http://localhost:3001/category')
-      console.log('Fetched Category:', res.data)
+      let res = await axios.get("http://localhost:3001/category")
+      console.log("Fetched Category:", res.data)
       console.log(res.data)
       setCategories(res.data)
     } catch (err) {
@@ -91,7 +91,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token")
     console.log(token)
 
     if (token) {
@@ -113,7 +113,7 @@ const App = () => {
         toggleSidebar={toggleSidebar}
         booking={bookings}
       />
-      <main className={isSidebarOpen ? 'shifted' : ''}>
+      <main className={isSidebarOpen ? "shifted" : ""}>
         <Routes>
           <Route path="/user" element={<SideBar user={user} />} />
           <Route path="/addvehicle" element={<AddVehicle />} />
@@ -188,6 +188,11 @@ const App = () => {
           <Route
             path="/booking/:vehicle_id"
             element={<AddBooking user={user} />}
+          ></Route>
+          <Route path="/bookings" element={<Bookings user={user} />}></Route>
+          <Route
+            path="/allbookings"
+            element={<AllBookings user={user} />}
           ></Route>
         </Routes>
       </main>

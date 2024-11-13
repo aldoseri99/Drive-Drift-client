@@ -28,10 +28,15 @@ const VehicleDetail = ({ user }) => {
           <p>{vehicle.color}</p>
           <p>{vehicle.category}</p>
           <p>{vehicle.description}</p>
-          <Link className="btn btn-primary" to={`/booking/${vehicle._id}`}>
-            Book
-          </Link>
-          <AddReview user={user} vehicle={vehicle} />
+          {user ? (
+            <div>
+              <Link className="btn btn-primary" to={`/booking/${vehicle._id}`}>
+                Book
+              </Link>
+              <AddReview user={user} vehicle={vehicle} />
+            </div>
+          ) : null}
+
           <ReviewsCard vehicle={vehicle} />
         </div>
       ) : null}

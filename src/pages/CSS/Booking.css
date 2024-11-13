@@ -1,0 +1,41 @@
+/* Table styling with background */
+.booking-history-table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f9f9f9; /* Light background color for the table */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  overflow: hidden;
+}
+
+/* Header styling */
+.table-header th {
+  background-color: #1c9eb2;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+/* Row and cell styling */
+.table-row:hover {
+  background-color: #e3f5f7; /* Light green background on hover */
+}
+
+.table-cell {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Image styling */
+.table-image {
+  width: 150px;
+  height: 84px;
+  border-radius: 5px;
+  object-fit: cover;
+}
