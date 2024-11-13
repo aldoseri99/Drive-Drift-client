@@ -5,8 +5,7 @@ import { Link } from "react-router-dom"
 import AddReview from "./AddReview"
 import ReviewsCard from "./ReviewsCard"
 import axios from "axios"
-import './CSS/VehicleDetail.css'
-
+import "./CSS/VehicleDetail.css"
 
 const VehicleDetail = ({ user }) => {
   let navigate = useNavigate()
@@ -25,11 +24,11 @@ const VehicleDetail = ({ user }) => {
     try {
       await axios.delete(`http://localhost:3001/vehicle/${vehicle_id}`)
 
-      alert('Post deleted successfully')
+      alert("Post deleted successfully")
       navigate(`/ViewCategories`)
     } catch (error) {
-      console.error('Error deleting post:', error)
-      alert('Error deleting post')
+      console.error("Error deleting post:", error)
+      alert("Error deleting post")
     }
   }
 
@@ -67,7 +66,7 @@ const VehicleDetail = ({ user }) => {
               <strong>Description:</strong> {vehicle.description}
             </p>
           </div>
-          {user && (
+          {user ? (
             <div className="vehicle-actions">
               <Link
                 className="btn btn-primary"
