@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { detailVehicle, setVehicle } from "../services/vehicleService"
-import { Link } from "react-router-dom"
-import AddReview from "./AddReview"
-import ReviewsCard from "./ReviewsCard"
+import { useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import { detailVehicle, setVehicle } from '../services/vehicleService'
+import { Link } from 'react-router-dom'
+import AddReview from './AddReview'
+import ReviewsCard from './ReviewsCard'
+import axios from 'axios'
 
 const VehicleDetail = ({ user }) => {
+  let navigate = useNavigate()
   const [vehicle, setVehicle] = useState()
   const { vehicle_id } = useParams()
   useEffect(() => {
@@ -15,6 +17,16 @@ const VehicleDetail = ({ user }) => {
     }
     getDetails()
   }, [])
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:3001/vehicle/${vehicle_id}`);
+      alert('Post deleted successfully'); 
+      navigate(`/ViewCategories`)
+    } catch (error) {
+      console.error('Error deleting post:', error);
+      alert('Error deleting post');
+    }
+  };
 
   return (
     <>
@@ -30,6 +42,13 @@ const VehicleDetail = ({ user }) => {
           <p>{vehicle.description}</p>
           {user ? (
             <div>
+              <Link
+                className="btn btn-primary"
+                to={`/VehicleUpdate/${vehicle._id}`}
+              >
+                Update
+              </Link>
+              <button onClick={handleDelete}>Delete Vehicle</button>
               <Link className="btn btn-primary" to={`/booking/${vehicle._id}`}>
                 Book
               </Link>
