@@ -122,3 +122,15 @@ a {
   display: flex;
   justify-content: end;
 }
+.category-btn .btn-primary {
+  width: 120px;
+}
+
+.category-form {
+  background-color: #ffffff96;
+}
+
+.category-label {
+}
+.category-input {
+}
