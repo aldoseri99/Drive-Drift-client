@@ -1,17 +1,17 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { setCategory } from '../services/categoryService'
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { setCategory } from "../services/categoryService"
 
 const AddCategory = () => {
   let navigate = useNavigate()
 
   const initialState = {
-    name: ''
+    name: "",
   }
 
   const [formValues, setFormValues] = useState(initialState)
   const [image, setImage] = useState(null)
-  const [imageBase64, setImageBase64] = useState('')
+  const [imageBase64, setImageBase64] = useState("")
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState(null)
 
@@ -36,31 +36,32 @@ const AddCategory = () => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
     console.log(e.target.name, e.target.value)
 
-    console.log('Updated formValues:', {
+    console.log("Updated formValues:", {
       ...formValues,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('submitting')
+    console.log("submitting")
     try {
       const response = await setCategory(formValues)
       console.log(response)
-      navigate('/viewcategories')
+      navigate("/viewcategories")
     } catch (error) {}
   }
 
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit} action="">
+      <form className="category-form" onSubmit={handleSubmit} action="">
+        <h3> Add Category</h3>
         <div>
-          <label className="form-label" htmlFor="">
+          <label className="form-label category-label" htmlFor="">
             Name
           </label>
           <input
-            className="form-control"
+            className="form-control category-input"
             onChange={handleChange}
             name="name"
             type="text"

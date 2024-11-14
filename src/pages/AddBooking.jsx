@@ -18,7 +18,7 @@ const AddBooking = ({ user }) => {
     const [endDateMin, setEndDateMin] = useState(
       new Date().toISOString().split("T")[0]
     )
-    const [emails, setEmails] = useState("")
+    const [emails, setEmails] = useState(user.email)
 
     const initialState = {
       startDate: "",
